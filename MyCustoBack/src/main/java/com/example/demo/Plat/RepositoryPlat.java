@@ -1,4 +1,6 @@
 package com.example.demo.Plat;
 
-public interface RepositoryPlat {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryPlat extends JpaRepository<Plat,Long> {
 }

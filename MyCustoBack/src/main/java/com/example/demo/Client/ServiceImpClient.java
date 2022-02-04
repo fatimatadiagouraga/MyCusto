@@ -24,7 +24,13 @@ public class ServiceImpClient implements ServiceClient {
 
     @Override
     public Client ModifierClient(Client client, Long id_client) {
-        return repositoryClient.save(client);
+        Client client1 = repositoryClient.findById(id_client).get();
+        client1.setNom(client.getNom());
+        client1.setPrenom(client.getPrenom());
+        client1.setAdresse(client.getAdresse());
+        client1.setEmail(client.getEmail());
+        client1.setTelephone(client.getTelephone());
+        return repositoryClient.save(client1);
     }
 
     @Override
@@ -33,8 +39,9 @@ public class ServiceImpClient implements ServiceClient {
     }
 
     @Override
-    public void SupprimerAdmin(Long id_client) {
+    public String SupprimerClient(Long id_client) {
         repositoryClient.deleteById(id_client);
+        return "suppression effectuée avec succèes";
 
     }
 }

@@ -18,17 +18,21 @@ public class ControllerAdmin {
       serviceAdmin.ajouterAdmin(administrateur);
       return "successss";
     }
+
+
     @GetMapping("listeAdmin")
     public List<Administrateur> listerAdmin() {
         return serviceAdmin.listerAdmin();
     }
-    @PutMapping
+
+
+    @PutMapping("modifierAdmin/{id_admin}")
     public Administrateur modifierAdmin(@RequestBody Administrateur administrateur, @PathVariable Long id_admin) {
      return serviceAdmin.modifierAdmin(administrateur,id_admin);
 
     }
 
-    @DeleteMapping
+    @DeleteMapping("supprimerAdmin/{id_admin}")
     public String supprimerAdmin(@PathVariable Long id_admin) {
         serviceAdmin.supprimerAdmin(id_admin);
         return "Suppression effectuée avec succès";
