@@ -37,5 +37,10 @@ public class ControllerAdmin {
         serviceAdmin.supprimerAdmin(id_admin);
         return "Suppression effectuée avec succès";
     }
+    @PostMapping("login/")
+    public String login(String motdepasse,String login){
+        serviceAdmin.login(motdepasse,login);
+        return "succes";
+    }
 
 }

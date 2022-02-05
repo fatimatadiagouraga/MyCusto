@@ -1,6 +1,10 @@
 package com.example.demo.Administrateur;
 
+import com.example.demo.Menu.Menu;
+import com.example.demo.Plat.Plat;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Administrateur {
@@ -16,13 +20,28 @@ public class Administrateur {
         @Column(nullable = false)
         private String login;
         @Column(nullable = false)
-        private int motdepasse;
+        private String motdepasse;
         @Column(nullable = false)
         @Enumerated(EnumType.STRING)
         private Profil profil;
 
+        @ManyToMany(mappedBy ="admin",  cascade = CascadeType.ALL)
+        private List<Plat> pla;
+
         public Long getId_admin() {
                 return id_admin;
+        }
+
+        public Administrateur(List<Plat> pla) {
+                this.pla = pla;
+        }
+
+        public List<Plat> getPla() {
+                return pla;
+        }
+
+        public void setPla(List<Plat> pla) {
+                this.pla = pla;
         }
 
         public void setId_admin(Long id_admin) {
@@ -85,11 +104,11 @@ public class Administrateur {
                 this.login = login;
         }
 
-        public int getMotdepasse() {
+        public String getMotdepasse() {
                 return motdepasse;
         }
 
-        public void setMotdepasse(int motdepasse) {
+        public void setMotdepasse(String motdepasse) {
                 this.motdepasse = motdepasse;
         }
 
@@ -104,7 +123,7 @@ public class Administrateur {
         public Administrateur() {
         }
 
-        public Administrateur(String nom, String prenom, String adresse, int téléphone, String email, String genre, String login, int motdepasse, Profil profil) {
+        public Administrateur(String nom, String prenom, String adresse, int téléphone, String email, String genre, String login, String motdepasse, Profil profil) {
                 this.nom = nom;
                 this.prenom = prenom;
                 this.adresse = adresse;

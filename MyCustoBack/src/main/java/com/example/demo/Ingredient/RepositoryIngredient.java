@@ -1,4 +1,4 @@
-package Ingredient;
+package com.example.demo.Ingredient;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

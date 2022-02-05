@@ -39,4 +39,9 @@ public class ServiceImpAdmin implements ServiceAdmin{
         repositoryAdmin.deleteById(id_admin);
         return "Suppression effectuée avec succès";
     }
+    @Override
+    public String login (String motdepasse,String login){
+        repositoryAdmin.findByMotdepasseAndLogin(motdepasse,login);
+                return "succes";
+    }
 }

@@ -1,9 +1,11 @@
 package com.example.demo.Plat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@Controller
 
 @RestController
 @CrossOrigin
@@ -11,6 +13,7 @@ import java.util.List;
 public class ControllerPlat {
     @Autowired
     ServicePlat servicePlat;
+
     @PostMapping("ajoutplat")
     public String ajouterPlat(@RequestBody Plat plat) {
         servicePlat.ajouterPlat(plat);

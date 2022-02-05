@@ -1,13 +1,14 @@
 package com.example.demo.Plat;
 
+
+import com.example.demo.Administrateur.Administrateur;
+import com.example.demo.Ingredient.Ingredient;
+import com.example.demo.Menu.Menu;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,6 +22,48 @@ public class Plat {
     private String image_plat;
     private String description;
     private Integer recette_plat;
+
+    @ManyToMany(mappedBy ="platList",  cascade = CascadeType.ALL)
+    private List<Menu> menus;
+
+
+    public Plat(Long id_plat) {
+        this.id_plat = id_plat;
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL )
+   @JoinTable(
+           name = "PlatAdmin"
+   )
+   private List<Administrateur> admin;
+
+
+
+
+
+    @ManyToMany(mappedBy ="plats",  cascade = CascadeType.ALL)
+    private List<Ingredient> ingredients;
+
+    public List<Administrateur> getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(List<Administrateur> admin) {
+        this.admin = admin;
+    }
+
+    public Plat(List<Administrateur> admin) {
+        this.admin = admin;
+    }
+
+    public Plat(String nom_plat, String image_plat, String description, Integer recette_plat, List<Menu> menus, List<Ingredient> ingredients) {
+        this.nom_plat = nom_plat;
+        this.image_plat = image_plat;
+        this.description = description;
+        this.recette_plat = recette_plat;
+        this.menus = menus;
+        this.ingredients = ingredients;
+    }
 
     public Long getId_plat() {
         return id_plat;
@@ -60,5 +103,21 @@ public class Plat {
 
     public void setRecette_plat(Integer recette_plat) {
         this.recette_plat = recette_plat;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }

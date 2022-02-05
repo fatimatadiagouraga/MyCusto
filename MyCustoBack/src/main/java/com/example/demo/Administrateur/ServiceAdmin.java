@@ -11,4 +11,5 @@ public interface ServiceAdmin {
     public List<Administrateur> listerAdmin();
     public Administrateur modifierAdmin(Administrateur administrateur,Long id_admin);
     public String supprimerAdmin(Long id_admin);
+    public String login (String motdepasse,String login);
 }

@@ -1,13 +1,17 @@
 package com.example.demo.Plat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+@Service
 
 public class ServiceImpPlat implements ServicePlat{
 
     @Autowired
     RepositoryPlat repositoryPlat;
+
     @Override
     public String ajouterPlat(Plat plat) {
         repositoryPlat.save(plat);
@@ -22,6 +26,7 @@ public class ServiceImpPlat implements ServicePlat{
     @Override
     public String modifierPlat(Plat plat, Long id_plat) {
         Plat plat1 = repositoryPlat.findById(id_plat).get();
+
         plat1.setNom_plat(plat.getNom_plat());
         plat1.setImage_plat(plat.getImage_plat());
         plat1.setDescription(plat.getDescription());
