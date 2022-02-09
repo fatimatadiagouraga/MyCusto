@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="entetePlat">
+      <ion-back-button [routerLink]="['/tabs/tabs/tab1']">Accueil</ion-back-button>
+      <ion-title>PlatDetails</ion-title>
+    </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <span>
+      <div class="nomPlat">
+        <ion-card>Burger</ion-card>
+        <ion-card>2500</ion-card>
+      </div>
+    </span>
+    <ion-img src="../assets/Images/menudujour.jpg" style="height:100px;" class="platDetail"></ion-img>
+  </ion-card>
+  <ion-button class="btnIngredient" color="white" >
+    Ingredients
+  </ion-button>
+  <ion-grid>
+    <ion-row>
+      <span>
+        <ion-col>
+          <div class="unIngredient">
+            <ion-card>
+              <ion-img src="../assets/Images/celeri.jpg" style="height:50px;" class="ingredient"></ion-img>
+            </ion-card>
+            <div class="nom">
+              celeri
+            </div>
+          </div>
+        </ion-col>
+      </span>
+      <span>
+        <ion-col>
+          <div class="unIngredient">
+            <ion-card>
+              <ion-img src="../assets/Images/celeri.jpg" style="height:50px;" class="ingredient"></ion-img>
+            </ion-card>
+            <div class="nom">
+              celeri
+            </div>
+          </div>
+        </ion-col>
+      </span>
+      <span>
+        <ion-col>
+          <div class="unIngredient">
+            <ion-card>
+              <ion-img src="../assets/Images/celeri.jpg" style="height:50px;" class="ingredient"></ion-img>
+            </ion-card>
+            <div class="nom">
+              celeri
+            </div>
+          </div>
+        </ion-col>
+      </span>
+    </ion-row>
+  </ion-grid>
+  <div class="valid">
+    <div class="field col-12 md:col-3">
+      <label for="vertical" style="display: block">Vertical</label>
+      <p-inputNumber [(ngModel)]="value19" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical"
+      decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+      </p-inputNumber>
+    </div>
+    <ion-button class="validercommande" color="black" [routerLink]="['/tabs/tabs/tab3']">Valider</ion-button>
+  </div>
+</ion-content>

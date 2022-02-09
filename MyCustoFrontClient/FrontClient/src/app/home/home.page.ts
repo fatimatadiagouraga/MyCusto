@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(public router:Router) {setTimeout(()=>{
+  constructor(public router: Router) {setTimeout(()=>{
     this.router.navigateByUrl('login');
   },3000);}
 
