@@ -29,6 +29,18 @@ const routes: Routes = [
   {
     path: 'plat-details',
     loadChildren: () => import('./plat-details/plat-details.module').then( m => m.PlatDetailsPageModule)
+  },
+  {
+    path: 'modifier-info-client',
+    loadChildren: () => import('./modifier-info-client/modifier-info-client.module').then( m => m.ModifierInfoClientPageModule)
+  },
+  {
+    path: 'inscription',
+    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
+  },
+  {
+    path: 'valider-commande',
+    loadChildren: () => import('./valider-commande/valider-commande.module').then( m => m.ValiderCommandePageModule)
   }
 ];
 @NgModule({

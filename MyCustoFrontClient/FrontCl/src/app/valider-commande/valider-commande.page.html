@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>valider Commande</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-img src="../assets/Images/validation.jpg" style="height: 200px;"></ion-img>
+<form action="">
+  <ion-item>
+    <ion-label position="floating" placehorder="entrer les coordonnées">Cordonnées</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select-option > selectionner votre moyen de payement
+    </ion-select-option>
+  </ion-item>
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select>
+    </ion-select>
+  </ion-item>
+</form>
+
+<div class="flex">
+  <ion-button  shape="round" class="annuler" color="black" [routerLink]="['/plat-details']">
+    Annuler
+  </ion-button>
+  <ion-button  shape="round" class="valider" color="black" [routerLink]="['/valider-commande']">
+    Valider
+  </ion-button>
+</div>
+</ion-content>
