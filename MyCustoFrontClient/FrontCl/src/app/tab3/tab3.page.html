@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content >
+<!--les plats-->
   <span>
     <div class="unecommande">
       <ion-card>
@@ -67,16 +68,18 @@
       </ion-card>
     </div>
   </span>
-  <div class="total">
-    <span>
+    <div class="totale">
       <ion-card>
-        <ion-button class="validercommande" color="black"
-        [routerLink]="['/tabs/tabs/tab1']">Annuler</ion-button>
-      </ion-card>
-      <ion-card>
-        <ion-button class="validercommande" color="black" [routerLink]="['/panier']">Valider</ion-button>
-      </ion-card>
-
-    </span>
-  </div>
+      <ion-card-header> Total</ion-card-header>
+      <ion-card-content>30000</ion-card-content>
+    </ion-card>
+    </div>
+  <div class="flex">
+    <ion-button  shape="round" class="annuler" color="black">
+      Annuler
+    </ion-button>
+    <ion-button  shape="round" class="valider" color="black">
+      Valider
+    </ion-button>
+</div>
 </ion-content>
