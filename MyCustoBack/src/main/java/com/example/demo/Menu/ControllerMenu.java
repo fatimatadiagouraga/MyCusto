@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin
-@RequestMapping("/api/menu/")
+@RequestMapping("/mycustoapi/menu/")
 public class ControllerMenu {
     @Autowired
     ServiceMenu serviceMenu;
@@ -19,7 +19,7 @@ public class ControllerMenu {
         return "Ajout effectué avec succès";
     }
 
-    @GetMapping("listMenu")
+    @GetMapping("listeMenu")
     public List<Menu> listerMenu() {
         return serviceMenu.listerMenu();
     }

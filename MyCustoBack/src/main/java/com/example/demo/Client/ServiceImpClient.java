@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 
@@ -18,9 +19,14 @@ public class ServiceImpClient implements ServiceClient {
     }
 
     @Override
-    public Client AjouterClient(Client client) {
-        return repositoryClient.save(client);
-    }
+    public String AjouterClient(Client client) {
+        Optional<Client> optionalClient=repositoryClient.findByEmailAndLogin(client.getEmail(), client.getLogin());
+        if (optionalClient.isPresent()){
+            return " email ou login existant";
+        }else{
+         repositoryClient.save(client);
+         return "success";
+    }}
 
     @Override
     public Client ModifierClient(Client client, Long id_client) {
@@ -30,6 +36,8 @@ public class ServiceImpClient implements ServiceClient {
         client1.setAdresse(client.getAdresse());
         client1.setEmail(client.getEmail());
         client1.setTelephone(client.getTelephone());
+        client1.setLogin(client.getLogin());
+        client1.setMotdepasse(client.getMotdepasse());
         return repositoryClient.save(client1);
     }
 
@@ -43,5 +51,11 @@ public class ServiceImpClient implements ServiceClient {
         repositoryClient.deleteById(id_client);
         return "suppression effectuée avec succèes";
 
+    }
+
+    @Override
+    public String connexion(String login, String motdepasse) {
+        repositoryClient.findByMotdepasseAndLogin(login,motdepasse);
+        return "connexion reussie";
     }
 }

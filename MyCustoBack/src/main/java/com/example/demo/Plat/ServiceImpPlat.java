@@ -1,16 +1,20 @@
 package com.example.demo.Plat;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 
-public class ServiceImpPlat implements ServicePlat{
+public class ServiceImpPlat implements ServicePlat {
 
     @Autowired
     RepositoryPlat repositoryPlat;
+
+
 
     @Override
     public String ajouterPlat(Plat plat) {
@@ -46,4 +50,13 @@ public class ServiceImpPlat implements ServicePlat{
         repositoryPlat.findById(id_plat).get();
         return null;
     }
+
+    @Override
+    public List<Plat> PlatSelected() {
+        return  repositoryPlat.findBySelectedIsTrue();
+    }
+
+
+
+
 }

@@ -19,6 +19,9 @@ public class Ingredient {
     )
     private List<Plat> plats;
 
+    public Ingredient() {
+    }
+
     public Ingredient(String imageIngredient, String nomIngredient, List<Plat> plats) {
         this.imageIngredient = imageIngredient;
         this.nomIngredient = nomIngredient;

@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/mycusto/client/api/")
+@RequestMapping("/mycustoApi/client/")
 public class ControllerClient {
     @Autowired
-   ServiceClient serviceClient;
-    
+    ServiceClient serviceClient;
+
 
     //liste globale des Clients
     @GetMapping("listeClient")
@@ -23,23 +23,30 @@ public class ControllerClient {
     }
 
     @PostMapping("ajoutClient")
-    public Client AjouterClient(@RequestBody Client client) {
+    public String AjouterClient(@RequestBody Client client) {
         return serviceClient.AjouterClient(client);
     }
 
     @PutMapping("modifierClient/{id_client}")
-    public Client ModifierClient(Client client, Long id_client){
-       return serviceClient.ModifierClient(client,id_client);
+    public Client ModifierClient(@RequestBody Client client, @PathVariable Long id_client) {
+        return serviceClient.ModifierClient(client, id_client);
     }
+
     @DeleteMapping("supprimerClient/{id_client}")
-    public String SupprimerClient(Long id_client) {
+    public String SupprimerClient(@PathVariable Long id_client) {
         serviceClient.SupprimerClient(id_client);
         return "suppression effectuée avec succèes";
 
     }
+
     @GetMapping("clientById/{id_client}")
-    public Client ClientById(Long id_client) {
+    public Client ClientById(@PathVariable Long id_client) {
         return serviceClient.ClientById(id_client);
     }
 
+
+    @PostMapping("connexion")
+    public String connexion(@RequestParam String login,@RequestParam String motdepasse) {
+        return serviceClient.connexion(login, motdepasse);
+    }
 }

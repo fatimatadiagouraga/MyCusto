@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Controller
+
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/plat/")
+@RequestMapping("/mycustoapi/plat/")
 public class ControllerPlat {
     @Autowired
     ServicePlat servicePlat;
@@ -35,7 +35,13 @@ public class ControllerPlat {
         return "supprimer avec succès";
     }
     @GetMapping("platById")
-    public String platbyId(Long id_plat) {
+    public String platbyId(@PathVariable Long id_plat) {
         return servicePlat.platbyId(id_plat);
     }
-}
+
+    @GetMapping("listePlatSelect")
+    public List<Plat> platSelected (){
+        return servicePlat.PlatSelected();
+    }
+
+   }

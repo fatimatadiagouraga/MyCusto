@@ -7,31 +7,33 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("api/ingredient/")
+@RequestMapping("/mycustoapi/ingredient/")
+
 public class ControllerIngredient {
     @Autowired
     ServiceIngredient serviceIngredient;
 
     @PostMapping("ajoutIngredient")
-    public String ajouterIngredient(Ingredient ingredient) {
+    public String ajouterIngredient(@RequestBody Ingredient ingredient) {
         serviceIngredient.ajouterIngredient(ingredient);
         return "ajout effectuer avec succès";
     }
 
     @DeleteMapping("supprimerIngredient/{idIngredient}")
-    public String supprimerIgredient( Long idIgredient) {
-        serviceIngredient.supprimerIgredient(idIgredient);
+    public String supprimerIgredient( @PathVariable Long idIngredient) {
+        serviceIngredient.supprimerIgredient(idIngredient);
         return "Suppression effectuée avec succès";
     }
 
     @PutMapping("modifierIngredient/{idIngredient}")
-    public Ingredient modifier(Ingredient ingredient, Long idIngredient) {
+    public Ingredient modifier(@RequestBody Ingredient ingredient, @PathVariable Long idIngredient) {
         return serviceIngredient.modifier(ingredient,idIngredient);
     }
 
 
     @GetMapping("listerIngredient")
     public List<Ingredient> listerIngredient() {
+
         return serviceIngredient.listerIngredient();
     }
 }

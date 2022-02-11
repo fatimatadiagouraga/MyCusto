@@ -2,6 +2,9 @@ package com.example.demo.Client;
 
 import com.example.demo.Commande.Commande;
 import com.example.demo.Menu.Menu;
+
+import com.example.demo.Plat.Plat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,22 +24,37 @@ public class Client {
     private String adresse;
     private String telephone;
     private String email;
+    private String motdepasse;
+    private String login;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Commande> commandes;
 
-    public Client() {
+
+
+
+
+    public Client(String motdepasse, String login) {
+        this.motdepasse = motdepasse;
+        this.login = login;
     }
 
-    public Client(String nom, String prenom, String adresse, String telephone, String email, List<Commande> commandes) {
+    public Client() {}
+
+    public Client(String nom, String prenom, String adresse, String telephone, String email, String motdepasse, String login, List<Commande> commandes, List<Plat> plats) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.telephone = telephone;
         this.email = email;
+        this.motdepasse = motdepasse;
+        this.login = login;
         this.commandes = commandes;
+
     }
+
+
 
     public Long getId_client() {
         return id_client;
@@ -86,6 +104,22 @@ public class Client {
         this.email = email;
     }
 
+    public String getMotdepasse() {
+        return motdepasse;
+    }
+
+    public void setMotdepasse(String motdepasse) {
+        this.motdepasse = motdepasse;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public List<Commande> getCommandes() {
         return commandes;
     }
@@ -93,6 +127,10 @@ public class Client {
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }
+
+
+
+
 }
 
 

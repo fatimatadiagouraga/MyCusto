@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServiceImpAdmin implements ServiceAdmin{
@@ -12,9 +13,13 @@ public class ServiceImpAdmin implements ServiceAdmin{
 
     @Override
     public String ajouterAdmin(Administrateur administrateur) {
+        Optional<Administrateur> adminemail =repositoryAdmin.findByEmailAndLogin(administrateur.getEmail(),administrateur.getLogin());
+        if(adminemail.isPresent()){
+            return "email existant";
+        }else {
         repositoryAdmin.save(administrateur);
         return "Ajout effectué avec succès";
-    }
+    }}
 
     @Override
     public List<Administrateur> listerAdmin() {
@@ -27,7 +32,7 @@ public class ServiceImpAdmin implements ServiceAdmin{
         administrateur1.setNom(administrateur.getNom());
         administrateur1.setPrenom(administrateur.getPrenom());
         administrateur1.setAdresse(administrateur.getAdresse());
-        administrateur1.setTéléphone(administrateur.getTéléphone());
+        administrateur1.setTelephone(administrateur.getTelephone());
         administrateur1.setLogin(administrateur.getLogin());
         administrateur1.setMotdepasse(administrateur.getMotdepasse());
         administrateur1.setProfil(administrateur.getProfil());

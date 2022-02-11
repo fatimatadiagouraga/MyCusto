@@ -2,6 +2,7 @@ package com.example.demo.Commande;
 
 import com.example.demo.Client.Client;
 import com.example.demo.Menu.Menu;
+import com.example.demo.Plat.Plat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,12 +13,19 @@ public class Commande {
     private  Long idCommande;
     private int prix;
     private LocalDate date = LocalDate.now();
+    @Enumerated
+    private Etat etat;
 
+    public Commande() {
+    }
 
-    @OneToOne
+    @ManyToOne
     private Client client;
 
-    @OneToOne
+    @ManyToOne
+    private Plat plats;
+
+    @ManyToOne
     private Menu menu;
 
     public Long getIdCommande() {
@@ -60,10 +68,30 @@ public class Commande {
         this.menu = menu;
     }
 
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
+
+    public Plat getPlats() {
+        return plats;
+    }
+
+    public void setPlats(Plat plats) {
+        this.plats = plats;
+    }
+
     public Commande(int prix, LocalDate date, Client client, Menu menu) {
         this.prix = prix;
         this.date = date;
         this.client = client;
         this.menu = menu;
+    }
+
+    public Commande(Plat plats) {
+        this.plats = plats;
     }
 }

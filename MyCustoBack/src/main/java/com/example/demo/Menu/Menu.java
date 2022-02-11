@@ -3,6 +3,7 @@ package com.example.demo.Menu;
 import com.example.demo.Client.Client;
 import com.example.demo.Commande.Commande;
 import com.example.demo.Plat.Plat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,18 +14,26 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_menu;
+
+    public Menu(List<Commande> commandes) {
+        this.commandes = commandes;
+    }
+
     @Column(nullable = false)
     private String image_menu;
     private String nom_menu;
     private String description_menu;
     private LocalDate date;
 
-
+    public Menu() {
+    }
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Selection")
     private List<Plat> platList;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "menu")
     private List<Commande> commandes;
 

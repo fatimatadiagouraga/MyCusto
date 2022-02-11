@@ -1,22 +1,20 @@
 package com.example.demo.Administrateur;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin
-@RequestMapping("/api/administrateur/")
+@RequestMapping("/mycustoApi/administrateur/")
 public class ControllerAdmin {
     @Autowired
     ServiceAdmin serviceAdmin;
 
     @PostMapping("ajoutAdmin")
     public String ajouterAdmin(@RequestBody Administrateur administrateur){
-      serviceAdmin.ajouterAdmin(administrateur);
-      return "successss";
+        return serviceAdmin.ajouterAdmin(administrateur);
     }
 
 
@@ -34,13 +32,13 @@ public class ControllerAdmin {
 
     @DeleteMapping("supprimerAdmin/{id_admin}")
     public String supprimerAdmin(@PathVariable Long id_admin) {
-        serviceAdmin.supprimerAdmin(id_admin);
-        return "Suppression effectuée avec succès";
+        return  serviceAdmin.supprimerAdmin(id_admin);
+
     }
     @PostMapping("login/")
-    public String login(String motdepasse,String login){
-        serviceAdmin.login(motdepasse,login);
-        return "succes";
+    public String login(@RequestParam String motdepasse,@RequestParam String login){
+        return serviceAdmin.login(motdepasse,login);
+
     }
 
 }

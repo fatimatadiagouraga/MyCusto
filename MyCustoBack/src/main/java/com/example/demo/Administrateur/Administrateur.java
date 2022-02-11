@@ -14,7 +14,7 @@ public class Administrateur {
         private String nom ;
         private String prenom;
         private String adresse;
-        private int téléphone;
+        private int telephone;
         private String email ;
         private String genre;
         @Column(nullable = false)
@@ -72,12 +72,12 @@ public class Administrateur {
                 this.adresse = adresse;
         }
 
-        public int getTéléphone() {
-                return téléphone;
+        public int getTelephone() {
+                return telephone;
         }
 
-        public void setTéléphone(int téléphone) {
-                this.téléphone = téléphone;
+        public void setTelephone(int telephone) {
+                this.telephone = telephone;
         }
 
         public String getEmail() {
@@ -123,11 +123,11 @@ public class Administrateur {
         public Administrateur() {
         }
 
-        public Administrateur(String nom, String prenom, String adresse, int téléphone, String email, String genre, String login, String motdepasse, Profil profil) {
+        public Administrateur(String nom, String prenom, String adresse, int telephone, String email, String genre, String login, String motdepasse, Profil profil) {
                 this.nom = nom;
                 this.prenom = prenom;
                 this.adresse = adresse;
-                this.téléphone = téléphone;
+                this.telephone = telephone;
                 this.email = email;
                 this.genre = genre;
                 this.login = login;
