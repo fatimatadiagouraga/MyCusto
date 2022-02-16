@@ -26,10 +26,6 @@ public class Plat {
     private int prix_plat;
 
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "plats")
-    private List<Commande> command;
-
     @ManyToMany(mappedBy ="platList",  cascade = CascadeType.ALL)
     private List<Menu> menus;
 
@@ -58,9 +54,7 @@ public class Plat {
         this.ingredients = ingredients;
     }
 
-    public Plat(List<Commande> command) {
-        this.command = command;
-    }
+
 
     public Long getId_plat() {
         return id_plat;
@@ -144,11 +138,5 @@ public class Plat {
         this.ingredients = ingredients;
     }
 
-    public List<Commande> getCommand() {
-        return command;
-    }
 
-    public void setCommand(List<Commande> command) {
-        this.command = command;
-    }
 }

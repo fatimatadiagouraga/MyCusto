@@ -1,15 +1,8 @@
 package com.example.demo.Client;
 
 import com.example.demo.Commande.Commande;
-import com.example.demo.Menu.Menu;
-
 import com.example.demo.Plat.Plat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.util.List;
 

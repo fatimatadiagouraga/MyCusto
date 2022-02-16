@@ -1,7 +1,6 @@
 package com.example.demo.Ingredient;
 
 import com.example.demo.Plat.Plat;
-
 import javax.persistence.*;
 import java.util.List;
 
