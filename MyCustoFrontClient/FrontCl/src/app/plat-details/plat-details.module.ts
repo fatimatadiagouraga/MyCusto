@@ -7,14 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { PlatDetailsPageRoutingModule } from './plat-details-routing.module';
 
 import { PlatDetailsPage } from './plat-details.page';
-import {InputNumberModule} from 'primeng/inputnumber';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     PlatDetailsPageRoutingModule,
-    InputNumberModule
   ],
   declarations: [PlatDetailsPage]
 })

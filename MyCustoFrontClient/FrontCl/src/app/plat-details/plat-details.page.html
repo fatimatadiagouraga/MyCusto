@@ -24,36 +24,12 @@
     <ion-row>
       <span>
         <ion-col>
-          <div class="unIngredient">
+          <div class="unIngredient" *ngFor="let liste of test">
             <ion-card>
-              <ion-img src="../assets/Images/celeri.jpg" style="height:50px;" class="ingredient"></ion-img>
+              <ion-img src="{{liste.imageIngredient}}" style="height:50px;" class="ingredient"></ion-img>
             </ion-card>
             <div class="nom">
-              celeri
-            </div>
-          </div>
-        </ion-col>
-      </span>
-      <span>
-        <ion-col>
-          <div class="unIngredient">
-            <ion-card>
-              <ion-img src="../assets/Images/celeri.jpg" style="height:50px;" class="ingredient"></ion-img>
-            </ion-card>
-            <div class="nom">
-              celeri
-            </div>
-          </div>
-        </ion-col>
-      </span>
-      <span>
-        <ion-col>
-          <div class="unIngredient">
-            <ion-card>
-              <ion-img src="../assets/Images/celeri.jpg" style="height:50px;" class="ingredient"></ion-img>
-            </ion-card>
-            <div class="nom">
-              celeri
+              {{liste.nomIngredient}}
             </div>
           </div>
         </ion-col>
@@ -62,10 +38,6 @@
   </ion-grid>
   <div class="valid">
     <div class="field col-12 md:col-3">
-      <label for="vertical" style="display: block">Vertical</label>
-      <p-inputNumber [(ngModel)]="value19" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical"
-      decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
-      </p-inputNumber>
     </div>
     <div class="flex">
       <ion-button  shape="round" class="annuler" color="black" [routerLink]="['/tabs/tabs/tab1']">
@@ -77,3 +49,4 @@
     </div>
   </div>
 </ion-content>
+
