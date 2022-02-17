@@ -1,11 +1,10 @@
 package com.example.demo.Client;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -46,7 +45,7 @@ public class ControllerClient {
 
 
     @PostMapping("connexion")
-    public String connexion(@RequestParam String login,@RequestParam String motdepasse) {
+    public Optional<Client> connexion(@RequestParam String login, @RequestParam String motdepasse) {
         return serviceClient.connexion(login, motdepasse);
     }
 }

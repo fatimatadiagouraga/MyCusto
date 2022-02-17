@@ -13,35 +13,38 @@ import java.util.List;
 public class ControllerPlat {
     @Autowired
     ServicePlat servicePlat;
-
+//Ajout des Plats
     @PostMapping("ajoutplat")
     public String ajouterPlat(@RequestBody Plat plat) {
         servicePlat.ajouterPlat(plat);
-        return "ajout avec succès";
+        return "ajout effectué avec succès";
     }
+    //Modification des plats
     @PutMapping("modifierPlat")
     public String modifierPlat(@RequestBody Plat plat,@PathVariable Long id_plat) {
         servicePlat.modifierPlat(plat,id_plat);
-        return "modification avec succès";
+        return "modification effectué avec succès";
     }
+    //Liste Globale des Plats
     @GetMapping("listePlat")
     public List<Plat> listerPlat() {
 
         return servicePlat.listerPlat();
     }
+
+    //Suppression Plat
     @DeleteMapping("supprimerPlat")
     public String supprimerPlat(@PathVariable Long id_plat) {
         servicePlat.supprimerPlat(id_plat);
-        return "supprimer avec succès";
+        return "supprimer effectué avec succès";
     }
+
+    //Détails Plat
     @GetMapping("platById")
     public String platbyId(@PathVariable Long id_plat) {
         return servicePlat.platbyId(id_plat);
     }
 
-    @GetMapping("listePlatSelect")
-    public List<Plat> platSelected (){
-        return servicePlat.PlatSelected();
-    }
+
 
    }

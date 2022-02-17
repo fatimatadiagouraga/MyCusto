@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -36,7 +37,7 @@ public class ControllerAdmin {
 
     }
     @PostMapping("login/")
-    public String login(@RequestParam String motdepasse,@RequestParam String login){
+    public Optional<Administrateur> login(@RequestParam String motdepasse, @RequestParam String login){
         return serviceAdmin.login(motdepasse,login);
 
     }

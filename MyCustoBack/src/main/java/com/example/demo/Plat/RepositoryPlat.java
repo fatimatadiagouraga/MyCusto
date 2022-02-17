@@ -6,6 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RepositoryPlat extends JpaRepository<Plat,Long> {
-    List<Plat>  findBySelectedIsTrue();
+
 
 }

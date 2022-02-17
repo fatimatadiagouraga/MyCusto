@@ -22,7 +22,7 @@ public class Plat {
     private String image_plat;
     private String description;
     private Integer recette_plat  ;
-    private Boolean selected=false;
+
     private int prix_plat;
 
 
@@ -42,12 +42,12 @@ public class Plat {
 
     public Plat() {}
 
-    public Plat(String nom_plat, String image_plat, String description, Integer recette_plat, Boolean selected, int prix_plat, List<Client> clients, List<Menu> menus, List<Administrateur> admin, List<Ingredient> ingredients) {
+    public Plat(String nom_plat, String image_plat, String description, Integer recette_plat, int prix_plat, List<Client> clients, List<Menu> menus, List<Administrateur> admin, List<Ingredient> ingredients) {
         this.nom_plat = nom_plat;
         this.image_plat = image_plat;
         this.description = description;
         this.recette_plat = recette_plat;
-        this.selected = selected;
+
         this.prix_plat = prix_plat;
         this.menus = menus;
         this.admin = admin;
@@ -98,13 +98,7 @@ public class Plat {
         this.recette_plat = recette_plat;
     }
 
-    public Boolean getSelected() {
-        return selected;
-    }
 
-    public void setSelected(Boolean selected) {
-        this.selected = selected;
-    }
 
     public int getPrix_plat() {return prix_plat;}
 

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface RepositoryAdmin extends JpaRepository<Administrateur,Long>{
 
-Optional<Administrateur> findByMotdepasseAndLogin(String motdepasse,String login);
+Optional<Administrateur> findAdministrateurByMotdepasseAndLogin(String motdepasse,String login);
 Optional<Administrateur> findByEmailAndLogin(String email,String login);
 
 

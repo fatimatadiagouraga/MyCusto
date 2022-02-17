@@ -3,6 +3,7 @@ package com.example.demo.Client;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface ServiceClient {
@@ -12,5 +13,5 @@ public interface ServiceClient {
    Client ModifierClient(Client client,Long id_client);
    Client ClientById(Long id_client);
    String SupprimerClient(Long id_client);
-   String connexion(String login,String motdepasse);
+   Optional<Client> connexion(String login, String motdepasse);
 }

@@ -54,8 +54,8 @@ public class ServiceImpClient implements ServiceClient {
     }
 
     @Override
-    public String connexion(String login, String motdepasse) {
-        repositoryClient.findByMotdepasseAndLogin(login,motdepasse);
-        return "connexion reussie";
+    public Optional<Client> connexion(String login, String motdepasse) {
+       return repositoryClient.findClientByMotdepasseAndLogin(login,motdepasse);
+
     }
 }

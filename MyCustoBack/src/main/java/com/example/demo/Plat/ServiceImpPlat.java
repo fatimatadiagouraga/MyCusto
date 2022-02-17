@@ -48,13 +48,10 @@ public class ServiceImpPlat implements ServicePlat {
     @Override
     public String platbyId(Long id_plat) {
         repositoryPlat.findById(id_plat).get();
-        return null;
+        return "null";
     }
 
-    @Override
-    public List<Plat> PlatSelected() {
-        return  repositoryPlat.findBySelectedIsTrue();
-    }
+
 
 
 
