@@ -11,6 +11,6 @@ public interface ServicePlat {
     public List<Plat> listerPlat();
     public String modifierPlat(Plat plat,Long id_plat);
     public String supprimerPlat(Long id_plat);
-    public String platbyId(Long id_plat);
+    public Plat platbyId(Long id_plat);
 
 }

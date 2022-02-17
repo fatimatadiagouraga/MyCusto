@@ -40,8 +40,8 @@ public class ControllerPlat {
     }
 
     //Détails Plat
-    @GetMapping("platById")
-    public String platbyId(@PathVariable Long id_plat) {
+    @GetMapping("platById/{id_plat}")
+    public Plat platbyId(@PathVariable Long id_plat) {
         return servicePlat.platbyId(id_plat);
     }
 

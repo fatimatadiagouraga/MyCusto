@@ -46,9 +46,9 @@ public class ServiceImpPlat implements ServicePlat {
     }
 
     @Override
-    public String platbyId(Long id_plat) {
-        repositoryPlat.findById(id_plat).get();
-        return "null";
+    public Plat platbyId(Long id_plat) {
+       return repositoryPlat.findById(id_plat).get();
+
     }
 
 
