@@ -5,5 +5,5 @@ import javax.persistence.Enumerated;
 
 public enum Profil {
     admin,
-    SuperAdmin;
+    superAdmin;
 }

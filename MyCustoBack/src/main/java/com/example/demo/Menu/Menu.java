@@ -2,6 +2,7 @@ package com.example.demo.Menu;
 
 import com.example.demo.Client.Client;
 import com.example.demo.Commande.Commande;
+import com.example.demo.MenuPlat.MenuPlat;
 import com.example.demo.Plat.Plat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,36 +16,29 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_menu;
 
-    public Menu(List<Commande> commandes) {
-        this.commandes = commandes;
-    }
+
 
     @Column(nullable = false)
-    private String image_menu;
+
     private String nom_menu;
     private String description_menu;
     private LocalDate date;
 
     public Menu() {
     }
-    @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Selection")
-    private List<Plat> platList;
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "menu")
     private List<Commande> commandes;
 
-    public Menu(String image_menu, String nom_menu, String description_menu, LocalDate date, List<Plat> platList, List<Commande> commandes) {
-        this.image_menu = image_menu;
-        this.nom_menu = nom_menu;
-        this.description_menu = description_menu;
-        this.date = date;
-        this.platList = platList;
-        this.commandes = commandes;
-    }
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "m")
+    private List<MenuPlat> menuPlats;
+
+
+
 
     public Long getId_menu() {
         return id_menu;
@@ -52,14 +46,6 @@ public class Menu {
 
     public void setId_menu(Long id_menu) {
         this.id_menu = id_menu;
-    }
-
-    public String getImage_menu() {
-        return image_menu;
-    }
-
-    public void setImage_menu(String image_menu) {
-        this.image_menu = image_menu;
     }
 
     public String getNom_menu() {
@@ -86,18 +72,20 @@ public class Menu {
         this.date = date;
     }
 
-    public List<Plat> getPlatList() {
-        return platList;
+    public List<MenuPlat> getMenuPlats() {
+        return menuPlats;
     }
 
-    public void setPlatList(List<Plat> platList) {
-        this.platList = platList;
+    public void setMenuPlats(List<MenuPlat> menuPlats) {
+        this.menuPlats = menuPlats;
     }
 
+    public Menu(List<Commande> commandes) {
+        this.commandes = commandes;
+    }
     public List<Commande> getCommandes() {
         return commandes;
     }
-
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }

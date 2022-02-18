@@ -1,9 +1,14 @@
 package com.example.demo.Plat;
 
 
+import com.example.demo.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,15 +16,22 @@ import java.util.Optional;
 
 public class ServiceImpPlat implements ServicePlat {
 
+
     @Autowired
     RepositoryPlat repositoryPlat;
 
 
 
     @Override
-    public String ajouterPlat(Plat plat) {
-        repositoryPlat.save(plat);
-        return "ajout avec succès";
+    public Plat ajouterPlat(Plat plat, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        plat.setImage_plat(fileName);
+        Plat savedPlat = repositoryPlat.save(plat);
+        String uploadDir = "src/main/resources/Photos/" + savedPlat.getId_plat();
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        return savedPlat;
+
+
     }
 
     @Override
@@ -28,20 +40,23 @@ public class ServiceImpPlat implements ServicePlat {
     }
 
     @Override
-    public String modifierPlat(Plat plat, Long id_plat) {
+    public Plat modifierPlat(Plat plat,Long id_plat) {
         Plat plat1 = repositoryPlat.findById(id_plat).get();
 
         plat1.setNom_plat(plat.getNom_plat());
         plat1.setImage_plat(plat.getImage_plat());
+        plat1.setPrix_plat(plat.getPrix_plat());
         plat1.setDescription(plat.getDescription());
-        plat1.setRecette_plat(plat.getRecette_plat());
-        repositoryPlat.save(plat1);
-        return "modification avec succès";
+        return repositoryPlat.save(plat1);
+
     }
 
     @Override
     public String supprimerPlat(Long id_plat) {
-        repositoryPlat.deleteById(id_plat);
+        Plat p = repositoryPlat.findById(id_plat).get();
+        p.setSupprimer(true);
+        p.setEtat(Etat.Desactiver);
+        repositoryPlat.save(p);
         return "supprimer avec succès";
     }
 

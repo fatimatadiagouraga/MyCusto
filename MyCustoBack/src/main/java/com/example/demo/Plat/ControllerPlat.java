@@ -3,7 +3,9 @@ package com.example.demo.Plat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -13,17 +15,19 @@ import java.util.List;
 public class ControllerPlat {
     @Autowired
     ServicePlat servicePlat;
-//Ajout des Plats
+
+
     @PostMapping("ajoutplat")
-    public String ajouterPlat(@RequestBody Plat plat) {
-        servicePlat.ajouterPlat(plat);
-        return "ajout effectué avec succès";
+    public Plat ajouterPlat(Plat plat, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        return servicePlat.ajouterPlat(plat, multipartFile);
     }
+
+
     //Modification des plats
-    @PutMapping("modifierPlat")
-    public String modifierPlat(@RequestBody Plat plat,@PathVariable Long id_plat) {
-        servicePlat.modifierPlat(plat,id_plat);
-        return "modification effectué avec succès";
+    @PutMapping("modifierPlat/{id_plat}")
+    public Plat modifierPlat(@PathVariable Long id_plat,@RequestBody Plat plat) {
+      return  servicePlat.modifierPlat(plat,id_plat);
+
     }
     //Liste Globale des Plats
     @GetMapping("listePlat")
@@ -33,7 +37,7 @@ public class ControllerPlat {
     }
 
     //Suppression Plat
-    @DeleteMapping("supprimerPlat")
+    @DeleteMapping("supprimerPlat/{id_plat}")
     public String supprimerPlat(@PathVariable Long id_plat) {
         servicePlat.supprimerPlat(id_plat);
         return "supprimer effectué avec succès";

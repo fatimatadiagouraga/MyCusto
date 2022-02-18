@@ -19,13 +19,13 @@ public class ServiceImpClient implements ServiceClient {
     }
 
     @Override
-    public String AjouterClient(Client client) {
+    public Client AjouterClient(Client client) {
         Optional<Client> optionalClient=repositoryClient.findByEmailAndLogin(client.getEmail(), client.getLogin());
         if (optionalClient.isPresent()){
-            return " email ou login existant";
+            return null;
         }else{
-         repositoryClient.save(client);
-         return "success";
+            return repositoryClient.save(client);
+
     }}
 
     @Override
@@ -48,7 +48,10 @@ public class ServiceImpClient implements ServiceClient {
 
     @Override
     public String SupprimerClient(Long id_client) {
-        repositoryClient.deleteById(id_client);
+        Client c =repositoryClient.findById(id_client).get();
+        c.setSupprimer(true);
+        c.setEtatClient(EtatClient.Desactiver);
+        repositoryClient.save(c);
         return "suppression effectuée avec succèes";
 
     }

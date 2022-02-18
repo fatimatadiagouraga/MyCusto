@@ -22,7 +22,7 @@ public class ControllerClient {
     }
 
     @PostMapping("ajoutClient")
-    public String AjouterClient(@RequestBody Client client) {
+    public Client AjouterClient(@RequestBody Client client) {
         return serviceClient.AjouterClient(client);
     }
 

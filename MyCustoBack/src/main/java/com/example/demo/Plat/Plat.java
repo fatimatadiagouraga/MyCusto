@@ -2,11 +2,9 @@ package com.example.demo.Plat;
 
 
 import com.example.demo.Administrateur.Administrateur;
-import com.example.demo.Client.Client;
 import com.example.demo.Commande.Commande;
 import com.example.demo.Ingredient.Ingredient;
-import com.example.demo.Menu.Menu;
-
+import com.example.demo.MenuPlat.MenuPlat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -21,37 +19,35 @@ public class Plat {
     private String nom_plat;
     private String image_plat;
     private String description;
-    private Integer recette_plat  ;
-
     private int prix_plat;
-
-
-    @ManyToMany(mappedBy ="platList",  cascade = CascadeType.ALL)
-    private List<Menu> menus;
-
+    private Boolean supprimer=false;
+    @Enumerated
+    private Etat etat;
 
 
     @ManyToMany(cascade = CascadeType.ALL )
-   @JoinTable(
-           name = "PlatAdmin"
-   )
-   private List<Administrateur> admin;
+    @JoinTable(name = "PlatAdmin")
+    private List<Administrateur> admin;
 
     @ManyToMany(mappedBy ="plats",  cascade = CascadeType.ALL)
     private List<Ingredient> ingredients;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "p")
+    private List<MenuPlat> menuPlats;
+
     public Plat() {}
 
-    public Plat(String nom_plat, String image_plat, String description, Integer recette_plat, int prix_plat, List<Client> clients, List<Menu> menus, List<Administrateur> admin, List<Ingredient> ingredients) {
+    public Plat(String nom_plat, String image_plat, String description,Etat etat ,Boolean supprimer,int prix_plat, List<Administrateur> admin, List<Ingredient> ingredients) {
         this.nom_plat = nom_plat;
         this.image_plat = image_plat;
         this.description = description;
-        this.recette_plat = recette_plat;
-
         this.prix_plat = prix_plat;
-        this.menus = menus;
         this.admin = admin;
         this.ingredients = ingredients;
+        this.etat = etat;
+        this.supprimer = supprimer;
+
     }
 
 
@@ -90,30 +86,10 @@ public class Plat {
         this.description = description;
     }
 
-    public Integer getRecette_plat() {
-        return recette_plat;
-    }
-
-    public void setRecette_plat(Integer recette_plat) {
-        this.recette_plat = recette_plat;
-    }
-
-
-
     public int getPrix_plat() {return prix_plat;}
 
     public void setPrix_plat(int prix_plat) {
         this.prix_plat = prix_plat;
-    }
-
-
-
-    public List<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
     }
 
     public List<Administrateur> getAdmin() {
@@ -132,5 +108,27 @@ public class Plat {
         this.ingredients = ingredients;
     }
 
+    public Boolean getSupprimer() {
+        return supprimer;
+    }
 
+    public void setSupprimer(Boolean supprimer) {
+        this.supprimer = supprimer;
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
+
+    public List<MenuPlat> getMenuPlats() {
+        return menuPlats;
+    }
+
+    public void setMenuPlats(List<MenuPlat> menuPlats) {
+        this.menuPlats = menuPlats;
+    }
 }

@@ -19,6 +19,10 @@ public class Client {
     private String email;
     private String motdepasse;
     private String login;
+    @Enumerated
+    private EtatClient etatClient=EtatClient.Activer;
+
+    private Boolean supprimer=false;
 
     @JsonIgnore
     @OneToMany(mappedBy = "client")
@@ -35,7 +39,7 @@ public class Client {
 
     public Client() {}
 
-    public Client(String nom, String prenom, String adresse, String telephone, String email, String motdepasse, String login, List<Commande> commandes, List<Plat> plats) {
+    public Client(String nom, String prenom, String adresse, String telephone,EtatClient etatClient, Boolean supprimer, String email, String motdepasse, String login, List<Commande> commandes, List<Plat> plats) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
@@ -44,6 +48,8 @@ public class Client {
         this.motdepasse = motdepasse;
         this.login = login;
         this.commandes = commandes;
+        this.etatClient = etatClient ;
+        this.supprimer = supprimer;
 
     }
 
@@ -121,9 +127,21 @@ public class Client {
         this.commandes = commandes;
     }
 
+    public EtatClient getEtatClient() {
+        return etatClient;
+    }
 
+    public void setEtatClient(EtatClient etatClient) {
+        this.etatClient = etatClient;
+    }
 
+    public Boolean getSupprimer() {
+        return supprimer;
+    }
 
+    public void setSupprimer(Boolean supprimer) {
+        this.supprimer = supprimer;
+    }
 }
 
 
