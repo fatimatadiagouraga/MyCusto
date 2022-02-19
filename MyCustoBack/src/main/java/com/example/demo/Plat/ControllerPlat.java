@@ -1,6 +1,7 @@
 package com.example.demo.Plat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +21,12 @@ public class ControllerPlat {
     @PostMapping("ajoutplat")
     public Plat ajouterPlat(Plat plat, @RequestParam("image") MultipartFile multipartFile) throws IOException {
         return servicePlat.ajouterPlat(plat, multipartFile);
+    }
+
+    @GetMapping(value = "imageplat/{id_plat}",produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+
+    byte[] getPhoto(@PathVariable("id_plat") long id) throws IOException{
+        return servicePlat.getPhoto(id) ;
     }
 
 

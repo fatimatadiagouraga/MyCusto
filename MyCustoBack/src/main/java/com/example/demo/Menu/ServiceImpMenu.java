@@ -25,7 +25,7 @@ public class ServiceImpMenu implements ServiceMenu{
     public Menu modifierMenu(Menu menu, Long id_menu) {
         Menu menu1=repositoryMenu.findById(id_menu).get();
         menu1.setNom_menu(menu.getNom_menu());
-        menu1.setImage_menu(menu.getImage_menu());
+
         menu1.setDescription_menu(menu.getDescription_menu());
         return repositoryMenu.save(menu1);
     }

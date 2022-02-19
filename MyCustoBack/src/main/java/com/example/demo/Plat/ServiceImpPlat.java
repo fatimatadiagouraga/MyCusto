@@ -8,7 +8,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,9 +70,15 @@ public class ServiceImpPlat implements ServicePlat {
 
     }
 
+    @Override
+    public byte[] getPhoto(long id_plat) throws IOException {
+        Plat plat = repositoryPlat.findById(id_plat).get();
+        String photo = plat.getImage_plat();
+        File file = new File("src/main/resources/Photos/" +plat.getId_plat() + "/" +photo);
+        Path path = Paths.get(file.toURI());
 
-
-
+        return Files.readAllBytes(path);
+    }
 
 
 }

@@ -14,5 +14,6 @@ public interface ServicePlat {
     public Plat modifierPlat(Plat plat,Long id_plat);
     public String supprimerPlat(Long id_plat);
     public Plat platbyId(Long id_plat);
+    public byte[] getPhoto(long id) throws IOException;
 
 }
