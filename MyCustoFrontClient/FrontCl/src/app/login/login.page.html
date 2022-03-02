@@ -4,17 +4,17 @@
   <ion-img src="../assets/Images/logo.PNG"></ion-img>
   <ion-card style="padding-top: 5px;padding-bottom:5px;">
     <ion-card-content >
-        <form action="" >
+        <form #loginForm="ngForm" (ngSubmit)="getLogin(loginForm)" >
           <ion-item>
             <ion-label position="floating">Login</ion-label>
-            <ion-input class="input1" type="text" name="username" ngModel></ion-input>
+            <ion-input class="input1" type="text" name="login" ngModel></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" name="password" ngModel></ion-input>
+            <ion-input type="password" name="motdepasse" ngModel></ion-input>
           </ion-item>
           <span>
-            <ion-button class="btn1" type="submit" [routerLink]="['/tabs/tabs/tab1']">Connecter</ion-button>
+            <ion-button class="btn1" type="submit" >Connecter</ion-button>
             <ion-button class="btn2"  [routerLink]="['/inscription']" routerLinkActive="router-link-active" [routerLink]="['/inscription']">S'inscrire</ion-button>
           </span>
         </form>

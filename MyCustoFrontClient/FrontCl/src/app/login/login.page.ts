@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ConnexionService } from '../connexion.service';
+import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,26 @@ import { ConnexionService } from '../connexion.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  test: any;
 
-  constructor(private service: ConnexionService ) { }
+  constructor(private service: LoginService,private router : Router ) { }
 
   ngOnInit() {
+
   }
-  onLogin(form: NgForm){
-    this.service.loginClient(form.value.username,form.value.password).subscribe((res: any) =>{
-      console.log(res);
-      if(res){
-      console.log('connexion reussi avec succès');
+
+  getLogin(form :NgForm){
+    return this.service.getLoginSer(form.value["login"],form.value["motdepasse"]).subscribe(data=>{
+
+      if(data){
+        console.log("connexion avec succes")
+        this.router.navigate(["/tabs/tabs/tab1"])
+      }
+     console.log(this.test);
     }
-    });
+
+    );
+  }
 
 
-}
 }

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  URL :'http://localhost:8080/mycustoapi/ingredient'
+  URL :'http://localhost:8080/mycustoapi/ingredient',
+
+  URL1: 'http://localhost:8080/mycustoApi/client',
 };
 
 /*
