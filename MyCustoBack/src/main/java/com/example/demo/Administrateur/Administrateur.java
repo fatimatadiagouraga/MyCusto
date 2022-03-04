@@ -24,6 +24,9 @@ public class Administrateur {
         @Column(nullable = false)
         @Enumerated(EnumType.STRING)
         private Profil profil;
+        @Enumerated(EnumType.STRING)
+        private Etat etat=Etat.activer;
+        private Boolean supprimer=true;
 
         @ManyToMany(mappedBy ="admin",  cascade = CascadeType.ALL)
         private List<Plat> pla;
@@ -118,6 +121,22 @@ public class Administrateur {
 
         public void setProfil(Profil profil) {
                 this.profil = profil;
+        }
+
+        public Etat getEtat_admin() {
+                return etat;
+        }
+
+        public void setEtat_admin(Etat etat_admin) {
+                this.etat = etat_admin;
+        }
+
+        public Boolean getSupprimer() {
+                return supprimer;
+        }
+
+        public void setSupprimer(Boolean supprimer) {
+                this.supprimer = supprimer;
         }
 
         public Administrateur() {

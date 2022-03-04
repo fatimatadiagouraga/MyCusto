@@ -14,7 +14,8 @@ public class ControllerAdmin {
     ServiceAdmin serviceAdmin;
 
     @PostMapping("ajoutAdmin")
-    public String ajouterAdmin(@RequestBody Administrateur administrateur){
+    @ResponseBody
+    public Administrateur ajouterAdmin(@RequestBody Administrateur administrateur){
         return serviceAdmin.ajouterAdmin(administrateur);
     }
 
@@ -36,7 +37,7 @@ public class ControllerAdmin {
         return  serviceAdmin.supprimerAdmin(id_admin);
 
     }
-    @PostMapping("login/")
+    @PostMapping("login")
     public Optional<Administrateur> login(@RequestParam String motdepasse, @RequestParam String login){
         return serviceAdmin.login(motdepasse,login);
 

@@ -24,12 +24,12 @@ public class ControllerMenu {
         return serviceMenu.listerMenu();
     }
 
-    @PutMapping
+    @PutMapping("modifierMenu/{id_menu}")
     public Menu modifierMenu(@RequestBody Menu menu,@PathVariable Long id_menu) {
         return serviceMenu.modifierMenu(menu,id_menu);
     }
 
-    @DeleteMapping
+    @DeleteMapping("supprimerMenu/{id_menu}")
     public String supprimerMenu(@PathVariable Long id_menu) {
         serviceMenu.supprimerMenu(id_menu);
         return "suppression effectuée avec succès";

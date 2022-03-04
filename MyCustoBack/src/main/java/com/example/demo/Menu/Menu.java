@@ -1,8 +1,8 @@
 package com.example.demo.Menu;
 
-import com.example.demo.Client.Client;
+
 import com.example.demo.Commande.Commande;
-import com.example.demo.MenuPlat.MenuPlat;
+
 import com.example.demo.Plat.Plat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -33,9 +33,13 @@ public class Menu {
     private List<Commande> commandes;
 
 
-    @JsonIgnore
+    @ManyToMany(mappedBy ="menus",  cascade = CascadeType.ALL)
+    private List<Plat> plats;
+
+
+    /*@JsonIgnore
     @OneToMany(mappedBy = "m")
-    private List<MenuPlat> menuPlats;
+    private List<MenuPlat> menuPlats;*/
 
 
 
@@ -50,6 +54,14 @@ public class Menu {
 
     public String getNom_menu() {
         return nom_menu;
+    }
+
+    public List<Plat> getPlats() {
+        return plats;
+    }
+
+    public void setPlats(List<Plat> plats) {
+        this.plats = plats;
     }
 
     public void setNom_menu(String nom_menu) {
@@ -72,13 +84,7 @@ public class Menu {
         this.date = date;
     }
 
-    public List<MenuPlat> getMenuPlats() {
-        return menuPlats;
-    }
 
-    public void setMenuPlats(List<MenuPlat> menuPlats) {
-        this.menuPlats = menuPlats;
-    }
 
     public Menu(List<Commande> commandes) {
         this.commandes = commandes;

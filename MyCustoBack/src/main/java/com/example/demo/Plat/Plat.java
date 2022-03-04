@@ -2,10 +2,11 @@ package com.example.demo.Plat;
 
 
 import com.example.demo.Administrateur.Administrateur;
-import com.example.demo.Commande.Commande;
+
 import com.example.demo.Ingredient.Ingredient;
-import com.example.demo.MenuPlat.MenuPlat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.demo.Menu.Menu;
+
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,19 +23,23 @@ public class Plat {
     private int prix_plat;
     private Boolean supprimer=false;
     @Enumerated
-    private Etat etat;
+    private Etat etat=Etat.Activer;
 
 
     @ManyToMany(cascade = CascadeType.ALL )
     @JoinTable(name = "PlatAdmin")
     private List<Administrateur> admin;
 
+    @ManyToMany(cascade = CascadeType.ALL )
+    @JoinTable(name = "Platmenu")
+    private List<Menu> menus;
+
     @ManyToMany(mappedBy ="plats",  cascade = CascadeType.ALL)
     private List<Ingredient> ingredients;
 
-    @JsonIgnore
+    /*@JsonIgnore
     @OneToMany(mappedBy = "p")
-    private List<MenuPlat> menuPlats;
+    private List<MenuPlat> menuPlats;*/
 
     public Plat() {}
 
@@ -100,6 +105,14 @@ public class Plat {
         this.admin = admin;
     }
 
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
+
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -124,11 +137,5 @@ public class Plat {
         this.etat = etat;
     }
 
-    public List<MenuPlat> getMenuPlats() {
-        return menuPlats;
-    }
 
-    public void setMenuPlats(List<MenuPlat> menuPlats) {
-        this.menuPlats = menuPlats;
-    }
 }

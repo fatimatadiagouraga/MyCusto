@@ -40,7 +40,8 @@ public class ServiceImpPlat implements ServicePlat {
 
     @Override
     public List<Plat> listerPlat() {
-        return repositoryPlat.findAll();
+
+        return repositoryPlat.findPlatByEtat(Etat.Activer);
     }
 
     @Override

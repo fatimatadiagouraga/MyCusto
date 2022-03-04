@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public interface ServiceAdmin {
-    public String ajouterAdmin (Administrateur administrateur);
+    public Administrateur ajouterAdmin (Administrateur administrateur);
     public List<Administrateur> listerAdmin();
     public Administrateur modifierAdmin(Administrateur administrateur,Long id_admin);
     public String supprimerAdmin(Long id_admin);

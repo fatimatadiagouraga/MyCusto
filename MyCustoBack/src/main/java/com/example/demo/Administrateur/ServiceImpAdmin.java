@@ -1,5 +1,7 @@
 package com.example.demo.Administrateur;
 
+import com.example.demo.Client.Client;
+import com.example.demo.Client.EtatClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +14,19 @@ public class ServiceImpAdmin implements ServiceAdmin{
     RepositoryAdmin repositoryAdmin;
 
     @Override
-    public String ajouterAdmin(Administrateur administrateur) {
+    public Administrateur ajouterAdmin(Administrateur administrateur) {
         Optional<Administrateur> adminemail =repositoryAdmin.findByEmailAndLogin(administrateur.getEmail(),administrateur.getLogin());
         if(adminemail.isPresent()){
-            return "email existant";
+            return null;
         }else {
-        repositoryAdmin.save(administrateur);
-        return "Ajout effectué avec succès";
+
+        return  repositoryAdmin.save(administrateur);
     }}
 
     @Override
     public List<Administrateur> listerAdmin() {
-        return repositoryAdmin.findAll();
+        return repositoryAdmin.findAdministrateurByEtat(Etat.activer);
+
     }
 
     @Override
@@ -41,7 +44,10 @@ public class ServiceImpAdmin implements ServiceAdmin{
 
     @Override
     public String supprimerAdmin(Long id_admin) {
-        repositoryAdmin.deleteById(id_admin);
+        Administrateur c =repositoryAdmin.findById(id_admin).get();
+        c.setSupprimer(true);
+        c.setEtat_admin(Etat.desactiver);
+        repositoryAdmin.save(c);
         return "Suppression effectuée avec succès";
     }
     @Override
