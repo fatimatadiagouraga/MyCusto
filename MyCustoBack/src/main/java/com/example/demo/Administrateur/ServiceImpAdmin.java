@@ -43,12 +43,12 @@ public class ServiceImpAdmin implements ServiceAdmin{
     }
 
     @Override
-    public String supprimerAdmin(Long id_admin) {
+    public Administrateur supprimerAdmin(Long id_admin) {
         Administrateur c =repositoryAdmin.findById(id_admin).get();
         c.setSupprimer(true);
         c.setEtat_admin(Etat.desactiver);
-        repositoryAdmin.save(c);
-        return "Suppression effectuée avec succès";
+        return repositoryAdmin.save(c);
+
     }
     @Override
     public Optional<Administrateur> login (String motdepasse, String login){

@@ -28,24 +28,14 @@ public class Administrateur {
         private Etat etat=Etat.activer;
         private Boolean supprimer=true;
 
-        @ManyToMany(mappedBy ="admin",  cascade = CascadeType.ALL)
-        private List<Plat> pla;
+        /*@ManyToMany(mappedBy ="admin",  cascade = CascadeType.ALL)
+        private List<Plat> pla;*/
 
         public Long getId_admin() {
                 return id_admin;
         }
 
-        public Administrateur(List<Plat> pla) {
-                this.pla = pla;
-        }
 
-        public List<Plat> getPla() {
-                return pla;
-        }
-
-        public void setPla(List<Plat> pla) {
-                this.pla = pla;
-        }
 
         public void setId_admin(Long id_admin) {
                 this.id_admin = id_admin;

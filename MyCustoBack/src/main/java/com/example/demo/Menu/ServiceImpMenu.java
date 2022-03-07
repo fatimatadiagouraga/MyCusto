@@ -35,4 +35,9 @@ public class ServiceImpMenu implements ServiceMenu{
         repositoryMenu.deleteById(id_menu);
         return "suppression effectuée avec succès";
     }
+
+    @Override
+    public Menu menubyId(Long id_menu) {
+        return repositoryMenu.findById(id_menu).get();
+    }
 }

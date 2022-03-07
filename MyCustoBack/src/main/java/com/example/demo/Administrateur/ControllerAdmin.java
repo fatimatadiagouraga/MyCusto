@@ -33,7 +33,7 @@ public class ControllerAdmin {
     }
 
     @DeleteMapping("supprimerAdmin/{id_admin}")
-    public String supprimerAdmin(@PathVariable Long id_admin) {
+    public Administrateur supprimerAdmin(@PathVariable Long id_admin) {
         return  serviceAdmin.supprimerAdmin(id_admin);
 
     }

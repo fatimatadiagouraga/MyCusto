@@ -1,5 +1,6 @@
 package com.example.demo.Commande;
 
+import com.example.demo.Administrateur.Administrateur;
 import com.example.demo.Client.Client;
 import com.example.demo.Menu.Menu;
 
@@ -16,15 +17,17 @@ public class Commande {
     @Enumerated
     private Etat etat;
 
-    public Commande() {
-    }
-
     @ManyToOne
     private Client client;
 
-
     @ManyToOne
     private Menu menu;
+
+    @ManyToOne
+    private Administrateur administrateur;
+
+    public Commande() {
+    }
 
     public Long getIdCommande() {
         return idCommande;
@@ -74,7 +77,13 @@ public class Commande {
         this.etat = etat;
     }
 
+    public Administrateur getAdministrateur() {
+        return administrateur;
+    }
 
+    public void setAdministrateur(Administrateur administrateur) {
+        this.administrateur = administrateur;
+    }
 
     public Commande(int prix, LocalDate date, Client client, Menu menu) {
         this.prix = prix;

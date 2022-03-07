@@ -12,11 +12,11 @@ public class Ingredient {
     private String imageIngredient;
     private String nomIngredient;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    /*@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "PlatIngredient"
     )
-    private List<Plat> plats;
+    private List<Plat> plats;*/
 
     public Ingredient() {
     }
@@ -24,7 +24,7 @@ public class Ingredient {
     public Ingredient(String imageIngredient, String nomIngredient, List<Plat> plats) {
         this.imageIngredient = imageIngredient;
         this.nomIngredient = nomIngredient;
-        this.plats = plats;
+
     }
 
     public Long getIdIngredient() {
@@ -51,11 +51,5 @@ public class Ingredient {
         this.nomIngredient = nomIngredient;
     }
 
-    public List<Plat> getPlats() {
-        return plats;
-    }
 
-    public void setPlats(List<Plat> plats) {
-        this.plats = plats;
-    }
 }

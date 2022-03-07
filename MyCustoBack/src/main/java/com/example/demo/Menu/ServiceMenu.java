@@ -8,4 +8,5 @@ public interface ServiceMenu {
     public List<Menu> listerMenu();
     public Menu modifierMenu(Menu menu,Long id_menu);
     public String supprimerMenu(Long id_menu);
+    public Menu menubyId(Long id_menu);
 }

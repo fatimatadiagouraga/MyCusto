@@ -2,6 +2,7 @@ package com.example.demo.Plat;
 
 
 import com.example.demo.FileUploadUtil;
+import com.example.demo.Menu.RepositoryMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -23,6 +24,8 @@ public class ServiceImpPlat implements ServicePlat {
 
     @Autowired
     RepositoryPlat repositoryPlat;
+    @Autowired
+    RepositoryMenu repositoryMenu;
 
 
 
@@ -47,8 +50,8 @@ public class ServiceImpPlat implements ServicePlat {
     @Override
     public Plat modifierPlat(Plat plat,Long id_plat) {
         Plat plat1 = repositoryPlat.findById(id_plat).get();
-
         plat1.setNom_plat(plat.getNom_plat());
+        plat1.setMenu(plat.getMenu());
         plat1.setImage_plat(plat.getImage_plat());
         plat1.setPrix_plat(plat.getPrix_plat());
         plat1.setDescription(plat.getDescription());

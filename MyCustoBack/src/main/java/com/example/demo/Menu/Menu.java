@@ -24,6 +24,9 @@ public class Menu {
     private String description_menu;
     private LocalDate date;
 
+    @Enumerated(EnumType.STRING)
+    private Jour menujour;
+
     public Menu() {
     }
 
@@ -31,18 +34,6 @@ public class Menu {
     @JsonIgnore
     @OneToMany(mappedBy = "menu")
     private List<Commande> commandes;
-
-
-    @ManyToMany(mappedBy ="menus",  cascade = CascadeType.ALL)
-    private List<Plat> plats;
-
-
-    /*@JsonIgnore
-    @OneToMany(mappedBy = "m")
-    private List<MenuPlat> menuPlats;*/
-
-
-
 
     public Long getId_menu() {
         return id_menu;
@@ -54,14 +45,6 @@ public class Menu {
 
     public String getNom_menu() {
         return nom_menu;
-    }
-
-    public List<Plat> getPlats() {
-        return plats;
-    }
-
-    public void setPlats(List<Plat> plats) {
-        this.plats = plats;
     }
 
     public void setNom_menu(String nom_menu) {
@@ -92,6 +75,15 @@ public class Menu {
     public List<Commande> getCommandes() {
         return commandes;
     }
+
+    public Jour getMenujour() {
+        return menujour;
+    }
+
+    public void setMenujour(Jour menujour) {
+        this.menujour = menujour;
+    }
+
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }

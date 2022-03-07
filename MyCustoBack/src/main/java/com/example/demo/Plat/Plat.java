@@ -26,30 +26,32 @@ public class Plat {
     private Etat etat=Etat.Activer;
 
 
-    @ManyToMany(cascade = CascadeType.ALL )
+    /*@ManyToMany(cascade = CascadeType.ALL )
     @JoinTable(name = "PlatAdmin")
-    private List<Administrateur> admin;
+    private List<Administrateur> admin;*/
 
-    @ManyToMany(cascade = CascadeType.ALL )
+    /*@ManyToMany(cascade = CascadeType.ALL )
     @JoinTable(name = "Platmenu")
-    private List<Menu> menus;
+    private List<Menu> menus;*/
 
-    @ManyToMany(mappedBy ="plats",  cascade = CascadeType.ALL)
-    private List<Ingredient> ingredients;
 
-    /*@JsonIgnore
-    @OneToMany(mappedBy = "p")
-    private List<MenuPlat> menuPlats;*/
+
+    @ManyToOne
+    @JoinColumn(name = "menu_id_menu")
+    private Menu menu;
+
+    /*@ManyToMany(mappedBy ="plats",  cascade = CascadeType.ALL)
+    private List<Ingredient> ingredients;*/
 
     public Plat() {}
 
-    public Plat(String nom_plat, String image_plat, String description,Etat etat ,Boolean supprimer,int prix_plat, List<Administrateur> admin, List<Ingredient> ingredients) {
+    public Plat(String nom_plat, String image_plat, String description,Etat etat ,Boolean supprimer,int prix_plat) {
         this.nom_plat = nom_plat;
         this.image_plat = image_plat;
         this.description = description;
         this.prix_plat = prix_plat;
-        this.admin = admin;
-        this.ingredients = ingredients;
+
+
         this.etat = etat;
         this.supprimer = supprimer;
 
@@ -97,30 +99,6 @@ public class Plat {
         this.prix_plat = prix_plat;
     }
 
-    public List<Administrateur> getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(List<Administrateur> admin) {
-        this.admin = admin;
-    }
-
-    public List<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
-    }
-
-    public List<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public Boolean getSupprimer() {
         return supprimer;
     }
@@ -135,7 +113,14 @@ public class Plat {
 
     public void setEtat(Etat etat) {
         this.etat = etat;
+
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
 
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 }
