@@ -20,68 +20,23 @@
     <ion-col>
         <div class="unplat">
 
-          <ion-card>
-            <ion-card-header class="textmenu">Menu du Jour</ion-card-header>
-            <ion-img src="../assets/Images/menudujour.jpg" style="height:30px;" class="menudujour"></ion-img>
-            <ion-card-content class="descriptionmenu">humberger viande</ion-card-content>
+          <ion-card *ngFor="let l of liste">
+
+            <ion-card-content class="descriptionmenu">{{l.nom_plat}}</ion-card-content>
+            <ion-img src="{{image}} {{l.id_plat}}" style="height:30px;" class="menudujour"></ion-img>
+            <div class="prix"> {{ l.prix_plat}}
+              <br>
+              <br>
+              <ion-img src="../assets/Images/commander.png" class="commander" [routerLink]="['/plat-details']"></ion-img>
+            </div>
+
           </ion-card>
-          <div class="prix">25000
-            <br>
-            <br>
-            <ion-img src="../assets/Images/commander.png" class="commander" [routerLink]="['/plat-details']"></ion-img>
-          </div>
+
         </div>
 
       </ion-col>
     </span>
-    <span>
-    <ion-col>
-      <div class="unplat">
-        <ion-card>
-          <ion-card-header class="textmenu">Menu du Jour</ion-card-header>
-          <ion-img src="../assets/Images/menudujour.jpg" style="height:30px;" class="menudujour"></ion-img>
-          <ion-card-content class="descriptionmenu">humberger viande</ion-card-content>
-        </ion-card>
-        <div class="prix">25000
-          <br>
-          <br>
-          <ion-img src="../assets/Images/commander.png" class="commander"></ion-img>
-        </div>
-      </div>
-    </ion-col>
-    </span>
-     <span>
-    <ion-col>
-      <div class="unplat">
-        <ion-card>
-          <ion-card-header class="textmenu">Menu du Jour</ion-card-header>
-          <ion-img src="../assets/Images/menudujour.jpg" style="height:30px;" class="menudujour"></ion-img>
-          <ion-card-content class="descriptionmenu">humberger viande</ion-card-content>
-        </ion-card>
-        <div class="prix">25000
-          <br>
-          <br>
-          <ion-img src="../assets/Images/commander.png" class="commander"></ion-img>
-        </div>
-      </div>
-    </ion-col>
-     </span>
-    <span>
-    <ion-col>
-      <div class="unplat">
-        <ion-card>
-          <ion-card-header class="textmenu">Menu du Jour</ion-card-header>
-          <ion-img src="../assets/Images/menudujour.jpg" style="height:30px;" class="menudujour"></ion-img>
-          <ion-card-content class="descriptionmenu">humberger viande</ion-card-content>
-        </ion-card>
-        <div class="prix">25000
-          <br>
-          <br>
-          <ion-img src="../assets/Images/commander.png" class="commander"></ion-img>
-        </div>
-      </div>
-    </ion-col>
-    </span>
+
   </ion-row>
 </ion-grid>
 </ion-content>

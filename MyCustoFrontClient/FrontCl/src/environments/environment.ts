@@ -7,6 +7,10 @@ export const environment = {
   URL :'http://localhost:8080/mycustoapi/ingredient',
 
   URL1: 'http://localhost:8080/mycustoApi/client',
+
+  ListePlat:'http://localhost:8080/mycustoApi/plat',
+
+  apiImage:'http://localhost:8080/mycustoApi/plat/imageplat/'
 };
 
 /*
