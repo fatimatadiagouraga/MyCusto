@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -12,8 +12,10 @@ import { InscriptionPage } from './inscription.page';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
-    InscriptionPageRoutingModule
+    InscriptionPageRoutingModule,
+    
   ],
   declarations: [InscriptionPage]
 })
