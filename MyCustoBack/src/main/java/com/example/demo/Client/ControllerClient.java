@@ -44,7 +44,7 @@ public class ControllerClient {
     }
 
 
-    @PostMapping("connexion")
+    @GetMapping("login")
     public Optional<Client> connexion(@RequestParam String login, @RequestParam String motdepasse) {
         return serviceClient.connexion(login, motdepasse);
     }

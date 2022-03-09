@@ -26,7 +26,7 @@ public class Administrateur {
         private Profil profil;
         @Enumerated(EnumType.STRING)
         private Etat etat=Etat.activer;
-        private Boolean supprimer=true;
+        private Boolean supprimer=false;
 
         /*@ManyToMany(mappedBy ="admin",  cascade = CascadeType.ALL)
         private List<Plat> pla;*/

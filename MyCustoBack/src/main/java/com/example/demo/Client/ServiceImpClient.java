@@ -24,6 +24,7 @@ public class ServiceImpClient implements ServiceClient {
         if (optionalClient.isPresent()){
             return null;
         }else{
+            client.setEtatClient(EtatClient.Activer);
             return repositoryClient.save(client);
 
     }}
@@ -58,7 +59,7 @@ public class ServiceImpClient implements ServiceClient {
 
     @Override
     public Optional<Client> connexion(String login, String motdepasse) {
-       return repositoryClient.findClientByMotdepasseAndLogin(login,motdepasse);
+       return repositoryClient.findClientByLoginAndMotdepasse(login,motdepasse);
 
     }
 }

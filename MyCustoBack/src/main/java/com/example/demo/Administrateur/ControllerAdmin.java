@@ -38,9 +38,13 @@ public class ControllerAdmin {
 
     }
     @PostMapping("login")
-    public Optional<Administrateur> login(@RequestParam String motdepasse, @RequestParam String login){
+    public Optional<Administrateur> connexion(@RequestParam String motdepasse, @RequestParam String login){
         return serviceAdmin.login(motdepasse,login);
 
+    }
+    @GetMapping("adminById/{id_admin}")
+    public Administrateur adminById(@PathVariable Long id_admin){
+        return serviceAdmin.adminById(id_admin);
     }
 
 }

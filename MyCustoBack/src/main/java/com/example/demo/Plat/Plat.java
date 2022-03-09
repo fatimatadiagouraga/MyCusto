@@ -1,15 +1,10 @@
 package com.example.demo.Plat;
 
 
-import com.example.demo.Administrateur.Administrateur;
-
-import com.example.demo.Ingredient.Ingredient;
 import com.example.demo.Menu.Menu;
 
 
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 
@@ -25,23 +20,15 @@ public class Plat {
     @Enumerated
     private Etat etat=Etat.Activer;
 
-
     /*@ManyToMany(cascade = CascadeType.ALL )
     @JoinTable(name = "PlatAdmin")
     private List<Administrateur> admin;*/
-
-    /*@ManyToMany(cascade = CascadeType.ALL )
-    @JoinTable(name = "Platmenu")
-    private List<Menu> menus;*/
-
-
 
     @ManyToOne
     @JoinColumn(name = "menu_id_menu")
     private Menu menu;
 
-    /*@ManyToMany(mappedBy ="plats",  cascade = CascadeType.ALL)
-    private List<Ingredient> ingredients;*/
+
 
     public Plat() {}
 
@@ -50,14 +37,9 @@ public class Plat {
         this.image_plat = image_plat;
         this.description = description;
         this.prix_plat = prix_plat;
-
-
         this.etat = etat;
         this.supprimer = supprimer;
-
     }
-
-
 
     public Long getId_plat() {
         return id_plat;
@@ -123,4 +105,6 @@ public class Plat {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
+
+
 }

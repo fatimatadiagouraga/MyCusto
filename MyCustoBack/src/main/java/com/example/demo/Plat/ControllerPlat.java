@@ -45,9 +45,9 @@ public class ControllerPlat {
 
     //Suppression Plat
     @DeleteMapping("supprimerPlat/{id_plat}")
-    public String supprimerPlat(@PathVariable Long id_plat) {
-        servicePlat.supprimerPlat(id_plat);
-        return "supprimer effectué avec succès";
+    public Plat supprimerPlat(@PathVariable Long id_plat) {
+
+        return servicePlat.supprimerPlat(id_plat);
     }
 
     //Détails Plat

@@ -3,6 +3,8 @@ package com.example.demo.Plat;
 
 import com.example.demo.FileUploadUtil;
 import com.example.demo.Menu.RepositoryMenu;
+import com.example.demo.Panier.Panier;
+import com.example.demo.Panier.RepositoryPanier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -26,7 +28,10 @@ public class ServiceImpPlat implements ServicePlat {
     RepositoryPlat repositoryPlat;
     @Autowired
     RepositoryMenu repositoryMenu;
-
+    @Autowired
+    RepositoryPanier repositoryPanier;
+    private Panier panier;
+    private int somme;
 
 
     @Override
@@ -52,7 +57,7 @@ public class ServiceImpPlat implements ServicePlat {
         Plat plat1 = repositoryPlat.findById(id_plat).get();
         plat1.setNom_plat(plat.getNom_plat());
         plat1.setMenu(plat.getMenu());
-        plat1.setImage_plat(plat.getImage_plat());
+        //plat1.setImage_plat(plat.getImage_plat());//
         plat1.setPrix_plat(plat.getPrix_plat());
         plat1.setDescription(plat.getDescription());
         return repositoryPlat.save(plat1);
@@ -60,12 +65,11 @@ public class ServiceImpPlat implements ServicePlat {
     }
 
     @Override
-    public String supprimerPlat(Long id_plat) {
+    public Plat supprimerPlat(Long id_plat) {
         Plat p = repositoryPlat.findById(id_plat).get();
         p.setSupprimer(true);
         p.setEtat(Etat.Desactiver);
-        repositoryPlat.save(p);
-        return "supprimer avec succès";
+        return repositoryPlat.save(p) ;
     }
 
     @Override
@@ -83,6 +87,16 @@ public class ServiceImpPlat implements ServicePlat {
 
         return Files.readAllBytes(path);
     }
+
+    /*@Override
+    public Plat platForPanier(Plat p, Long id_plat) {
+        repositoryPlat.findById(id_plat).get();
+        somme+= p.getPrix_plat();
+        panier.setNom_plat(p.getNom_plat());
+        panier.setPrix_plat(p.getPrix_plat());
+        panier.setPrix_total(somme);
+        return null;
+    }*/
 
 
 }

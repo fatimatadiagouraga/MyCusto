@@ -31,14 +31,14 @@ public class ServiceImpAdmin implements ServiceAdmin{
 
     @Override
     public Administrateur modifierAdmin(Administrateur administrateur, Long id_admin) {
-        Administrateur administrateur1=repositoryAdmin.findById(id_admin).get();
+        Administrateur administrateur1 = repositoryAdmin.findById(id_admin).get();
         administrateur1.setNom(administrateur.getNom());
         administrateur1.setPrenom(administrateur.getPrenom());
         administrateur1.setAdresse(administrateur.getAdresse());
         administrateur1.setTelephone(administrateur.getTelephone());
         administrateur1.setLogin(administrateur.getLogin());
-        administrateur1.setMotdepasse(administrateur.getMotdepasse());
         administrateur1.setProfil(administrateur.getProfil());
+        administrateur1.setGenre(administrateur.getGenre());
         return repositoryAdmin.save(administrateur1);
     }
 
@@ -54,5 +54,10 @@ public class ServiceImpAdmin implements ServiceAdmin{
     public Optional<Administrateur> login (String motdepasse, String login){
       return  repositoryAdmin.findAdministrateurByMotdepasseAndLogin(motdepasse,login);
 
+    }
+
+    @Override
+    public Administrateur adminById(Long id_admin) {
+        return repositoryAdmin.findById(id_admin).get();
     }
 }

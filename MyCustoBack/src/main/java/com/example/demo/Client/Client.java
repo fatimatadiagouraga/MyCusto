@@ -19,17 +19,10 @@ public class Client {
     private String email;
     private String motdepasse;
     private String login;
-    @Enumerated
-    private EtatClient etatClient=EtatClient.Activer;
+    @Enumerated(EnumType.STRING)
+    private EtatClient etatClient;
 
     private Boolean supprimer=false;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "client")
-    private List<Commande> commandes;
-
-
-
 
 
     public Client(String motdepasse, String login) {
@@ -47,7 +40,7 @@ public class Client {
         this.email = email;
         this.motdepasse = motdepasse;
         this.login = login;
-        this.commandes = commandes;
+
         this.etatClient = etatClient ;
         this.supprimer = supprimer;
 
@@ -119,13 +112,7 @@ public class Client {
         this.login = login;
     }
 
-    public List<Commande> getCommandes() {
-        return commandes;
-    }
 
-    public void setCommandes(List<Commande> commandes) {
-        this.commandes = commandes;
-    }
 
     public EtatClient getEtatClient() {
         return etatClient;

@@ -31,9 +31,9 @@ public class Menu {
     }
 
 
-    @JsonIgnore
+    /*@JsonIgnore
     @OneToMany(mappedBy = "menu")
-    private List<Commande> commandes;
+    private List<Commande> commandes;*/
 
     public Long getId_menu() {
         return id_menu;
@@ -69,12 +69,7 @@ public class Menu {
 
 
 
-    public Menu(List<Commande> commandes) {
-        this.commandes = commandes;
-    }
-    public List<Commande> getCommandes() {
-        return commandes;
-    }
+
 
     public Jour getMenujour() {
         return menujour;
@@ -84,7 +79,5 @@ public class Menu {
         this.menujour = menujour;
     }
 
-    public void setCommandes(List<Commande> commandes) {
-        this.commandes = commandes;
-    }
+
 }
