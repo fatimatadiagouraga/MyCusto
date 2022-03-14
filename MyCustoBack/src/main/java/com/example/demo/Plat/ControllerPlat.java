@@ -1,12 +1,15 @@
 package com.example.demo.Plat;
 
+import com.example.demo.Menu.Jour;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -54,6 +57,12 @@ public class ControllerPlat {
     @GetMapping("platById/{id_plat}")
     public Plat platbyId(@PathVariable Long id_plat) {
         return servicePlat.platbyId(id_plat);
+    }
+
+    //Menu du jour
+    @GetMapping("menudujour/{jour}")
+    public List<Plat> menudujour(@PathVariable Jour jour){
+        return servicePlat.menudujour(jour);
     }
 
 

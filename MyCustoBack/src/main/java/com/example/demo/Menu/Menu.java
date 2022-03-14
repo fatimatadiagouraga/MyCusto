@@ -9,10 +9,12 @@ import org.springframework.data.convert.Jsr310Converters;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.List;
 
 @Entity
@@ -24,7 +26,11 @@ public class Menu {
     @Column(nullable = false)
     private String nom_menu;
     private String description_menu;
-    private LocalDate date;
+
+    private LocalDate date=LocalDate.now() ;
+    private LocalDate d ;
+
+
 
     @Enumerated(EnumType.STRING)
     private Jour menujour;
@@ -72,6 +78,14 @@ public class Menu {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalDate getD() {
+        return d;
+    }
+
+    public void setD(LocalDate d) {
+        this.d = d;
     }
 
     public Etat getEtat() {

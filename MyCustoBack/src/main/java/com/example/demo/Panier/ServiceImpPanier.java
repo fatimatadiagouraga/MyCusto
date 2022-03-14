@@ -9,6 +9,7 @@ import com.example.demo.Plat.ServicePlat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -40,6 +41,11 @@ public class ServiceImpPanier implements Servicepanier{
     @Override
     public void supprimerPanier(Long id_panier) {
         repositoryclient.deleteById(id_panier);
+    }
+
+    @Override
+    public List<Plat> menudujour(LocalDate date) {
+        return null;
     }
 
 }

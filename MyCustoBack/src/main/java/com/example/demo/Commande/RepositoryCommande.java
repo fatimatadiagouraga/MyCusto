@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface RepositoryCommande extends JpaRepository<Commande,Long> {
+    List<Commande> findCommandeByEtat(Etat etat);
 
 }

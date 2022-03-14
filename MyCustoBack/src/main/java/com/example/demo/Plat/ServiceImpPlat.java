@@ -2,6 +2,7 @@ package com.example.demo.Plat;
 
 
 import com.example.demo.FileUploadUtil;
+import com.example.demo.Menu.Jour;
 import com.example.demo.Menu.RepositoryMenu;
 import com.example.demo.Panier.Panier;
 import com.example.demo.Panier.RepositoryPanier;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,6 +89,18 @@ public class ServiceImpPlat implements ServicePlat {
         Path path = Paths.get(file.toURI());
 
         return Files.readAllBytes(path);
+    }
+
+    @Override
+    public List<Plat> menudujour(Jour jour) {
+
+        return repositoryPlat.findPlatByMenu(jour);
+    }
+
+    @Override
+    public List<Plat> mj() {
+
+        return null;
     }
 
     /*@Override

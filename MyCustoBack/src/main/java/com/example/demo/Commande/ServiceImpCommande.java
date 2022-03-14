@@ -26,6 +26,14 @@ public class ServiceImpCommande implements ServiceCommande{
         Client client=repositoryClient.findById(id_client).get();
         commande.setClient(client);
         commande.setEtat(Etat.Attente);
+        int somme = 0;
+        List<Panier> liste = commande.getPanierList();
+        for (int i =0; i<liste.size(); i++){
+            somme = somme + liste.get(i).getPlat().getPrix_plat();
+        }
+
+        commande.setMontant(somme);
+
         return repCommande.save(commande);
     }
 
@@ -36,12 +44,14 @@ public class ServiceImpCommande implements ServiceCommande{
 
     @Override
     public Commande modifierCommande(Commande commande, Long idCommande) {
-        return null;
+        Commande c =repCommande.findById(idCommande).get();
+        c.setEtat(commande.getEtat());
+        return repCommande.save(c) ;
     }
 
     @Override
     public List<Commande> listeCommande() {
-        return null;
+        return repCommande.findCommandeByEtat(Etat.Attente);
     }
 
     /*@Override

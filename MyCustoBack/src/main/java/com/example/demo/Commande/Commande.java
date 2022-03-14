@@ -20,6 +20,7 @@ public class Commande {
     private LocalDate date = LocalDate.now();
     @Enumerated(EnumType.STRING)
     private Etat etat;
+    private int montant;
 
     @ManyToOne
     private Client client;
@@ -79,6 +80,14 @@ public class Commande {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public int getMontant() {
+        return montant;
+    }
+
+    public void setMontant(int montant) {
+        this.montant = montant;
     }
 
     public Commande(int prix, LocalDate date, Client client, Menu menu) {
