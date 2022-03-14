@@ -57,6 +57,7 @@ public class ServiceImpPlat implements ServicePlat {
         Plat plat1 = repositoryPlat.findById(id_plat).get();
         plat1.setNom_plat(plat.getNom_plat());
         plat1.setMenu(plat.getMenu());
+        plat1.setIngredients(plat.getIngredients());
         //plat1.setImage_plat(plat.getImage_plat());//
         plat1.setPrix_plat(plat.getPrix_plat());
         plat1.setDescription(plat.getDescription());

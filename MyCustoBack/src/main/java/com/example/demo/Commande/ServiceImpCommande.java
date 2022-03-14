@@ -1,5 +1,7 @@
 package com.example.demo.Commande;
 
+import com.example.demo.Client.Client;
+import com.example.demo.Client.RepositoryClient;
 import com.example.demo.Menu.RepositoryMenu;
 import com.example.demo.Panier.Panier;
 import com.example.demo.Panier.RepositoryPanier;
@@ -15,10 +17,16 @@ public class ServiceImpCommande implements ServiceCommande{
     RepositoryCommande repCommande;
     @Autowired
     RepositoryPanier repositoryPanier;
+    @Autowired
+    RepositoryClient repositoryClient;
+
 
     @Override
-    public Commande ajoutCommande(Commande commande) {
-            return repCommande.save(commande);
+    public Commande ajoutCommande(Commande commande,Long id_client) {
+        Client client=repositoryClient.findById(id_client).get();
+        commande.setClient(client);
+        commande.setEtat(Etat.Attente);
+        return repCommande.save(commande);
     }
 
     @Override

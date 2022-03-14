@@ -30,9 +30,9 @@ public class ControllerMenu {
     }
 
     @DeleteMapping("supprimerMenu/{id_menu}")
-    public String supprimerMenu(@PathVariable Long id_menu) {
-        serviceMenu.supprimerMenu(id_menu);
-        return "suppression effectuée avec succès";
+    public Menu supprimerMenu(@PathVariable Long id_menu) {
+       return serviceMenu.supprimerMenu(id_menu);
+
     }
     @GetMapping("menubyId/{id_menu}")
     public Menu menubyId(@PathVariable Long id_menu) {

@@ -5,9 +5,14 @@ import com.example.demo.Commande.Commande;
 
 import com.example.demo.Plat.Plat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.convert.Jsr310Converters;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -16,16 +21,18 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_menu;
 
-
-
     @Column(nullable = false)
-
     private String nom_menu;
     private String description_menu;
     private LocalDate date;
 
     @Enumerated(EnumType.STRING)
     private Jour menujour;
+
+    @Enumerated(EnumType.STRING)
+    private Etat etat;
+
+    private Boolean supprimer=false;
 
     public Menu() {
     }
@@ -67,9 +74,21 @@ public class Menu {
         this.date = date;
     }
 
+    public Etat getEtat() {
+        return etat;
+    }
 
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
 
+    public Boolean getSupprimer() {
+        return supprimer;
+    }
 
+    public void setSupprimer(Boolean supprimer) {
+        this.supprimer = supprimer;
+    }
 
     public Jour getMenujour() {
         return menujour;

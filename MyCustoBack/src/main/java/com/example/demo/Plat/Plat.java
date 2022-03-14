@@ -15,6 +15,7 @@ public class Plat {
     private String nom_plat;
     private String image_plat;
     private String description;
+    private String ingredients;
     private int prix_plat;
     private Boolean supprimer=false;
     @Enumerated
@@ -79,6 +80,14 @@ public class Plat {
 
     public void setPrix_plat(int prix_plat) {
         this.prix_plat = prix_plat;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
     }
 
     public Boolean getSupprimer() {

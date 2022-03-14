@@ -9,6 +9,8 @@ import com.example.demo.Plat.ServicePlat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServiceImpPanier implements Servicepanier{
     @Autowired
@@ -30,9 +32,9 @@ public class ServiceImpPanier implements Servicepanier{
     }
 
     @Override
-    public Panier panierParClt(Long id_client) {
+    public List<Panier> panierParClt(Long id_client) {
         Client client =repositoryclient.findById(id_client).get();
-        return (Panier) repositoryPanier.findPanierByClient(id_client);
+        return  repositoryPanier.findPanierByClient(client);
     }
 
     @Override

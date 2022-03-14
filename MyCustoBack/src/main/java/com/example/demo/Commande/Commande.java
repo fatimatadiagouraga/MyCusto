@@ -18,8 +18,11 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long idCommande;
     private LocalDate date = LocalDate.now();
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Etat etat;
+
+    @ManyToOne
+    private Client client;
 
     @OneToMany
     List<Panier> panierList;
@@ -68,6 +71,14 @@ public class Commande {
 
     public void setPanierList(List<Panier> panierList) {
         this.panierList = panierList;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Commande(int prix, LocalDate date, Client client, Menu menu) {

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ServiceCommande {
 
-    public Commande ajoutCommande(Commande commande);
+    public Commande ajoutCommande(Commande commande,Long id_client);
     public void supprimerCommande(Long idCommande);
     public Commande modifierCommande(Commande commande,Long idCommande);
     public List<Commande> listeCommande();

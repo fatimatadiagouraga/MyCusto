@@ -11,14 +11,17 @@ public class ServiceImpMenu implements ServiceMenu{
     RepositoryMenu repositoryMenu;
 
     @Override
-    public String ajouterMenu(Menu menu) {
-        repositoryMenu.save(menu);
-        return "Ajout effectué avec succès";
+    public Menu ajouterMenu(Menu menu) {
+        menu.setEtat(Etat.Activer);
+        menu.getDate().getDayOfWeek();
+      return   repositoryMenu.save(menu);
+
     }
 
     @Override
     public List<Menu> listerMenu() {
-        return repositoryMenu.findAll();
+
+        return repositoryMenu.findMenuByEtat(Etat.Activer);
     }
 
     @Override
@@ -31,9 +34,12 @@ public class ServiceImpMenu implements ServiceMenu{
     }
 
     @Override
-    public String supprimerMenu(Long id_menu) {
-        repositoryMenu.deleteById(id_menu);
-        return "suppression effectuée avec succès";
+    public Menu supprimerMenu(Long id_menu) {
+        Menu menu=repositoryMenu.findById(id_menu).get();
+        menu.setEtat(Etat.Desactiver);
+        menu.setSupprimer(true);
+       return repositoryMenu.save(menu);
+
     }
 
     @Override
