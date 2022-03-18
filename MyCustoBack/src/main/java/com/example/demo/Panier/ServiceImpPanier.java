@@ -29,18 +29,23 @@ public class ServiceImpPanier implements Servicepanier{
         panier.setPlat(plat);
         panier.setClient(client);
         panier.setCommander(false);
+        panier.setSupprimer(false);
         return repositoryPanier.save(panier);
     }
 
     @Override
     public List<Panier> panierParClt(Long id_client) {
         Client client =repositoryclient.findById(id_client).get();
-        return  repositoryPanier.findPanierByClient(client);
+        return  repositoryPanier.findPanierByClientAndCommander(client,false);
     }
 
     @Override
-    public void supprimerPanier(Long id_panier) {
-        repositoryclient.deleteById(id_panier);
+    public Panier supprimerPanier(Long id_panier) {
+        Panier panier=repositoryPanier.findById(id_panier).get();
+        panier.setSupprimer(true);
+        panier.setCommander(true);
+       return repositoryPanier.save(panier);
+
     }
 
     @Override

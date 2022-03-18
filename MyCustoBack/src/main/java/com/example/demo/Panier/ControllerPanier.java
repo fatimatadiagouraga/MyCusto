@@ -24,5 +24,10 @@ public class ControllerPanier {
         return  servicepanier.panierParClt(id_client);
    }
 
+   @DeleteMapping("suppPanier/{id_panier}")
+    public Panier supprimerPanier(@PathVariable Long id_panier){
+        return servicepanier.supprimerPanier(id_panier);
+   }
+
 
 }

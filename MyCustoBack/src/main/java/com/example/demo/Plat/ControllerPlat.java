@@ -27,7 +27,6 @@ public class ControllerPlat {
     }
 
     @GetMapping(value = "imageplat/{id_plat}",produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-
     byte[] getPhoto(@PathVariable("id_plat") long id) throws IOException{
         return servicePlat.getPhoto(id) ;
     }
@@ -42,14 +41,12 @@ public class ControllerPlat {
     //Liste Globale des Plats
     @GetMapping("listePlat")
     public List<Plat> listerPlat() {
-
         return servicePlat.listerPlat();
     }
 
     //Suppression Plat
     @DeleteMapping("supprimerPlat/{id_plat}")
     public Plat supprimerPlat(@PathVariable Long id_plat) {
-
         return servicePlat.supprimerPlat(id_plat);
     }
 
@@ -65,6 +62,10 @@ public class ControllerPlat {
         return servicePlat.menudujour(jour);
     }
 
+    @GetMapping("listParMenu/{id_menu}")
+    public List<Plat> platParMenu(@PathVariable Long id_menu){
+        return servicePlat.platParMenu(id_menu);
+    }
 
 
    }

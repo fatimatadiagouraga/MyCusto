@@ -30,6 +30,8 @@ public class ServiceImpCommande implements ServiceCommande{
         List<Panier> liste = commande.getPanierList();
         for (int i =0; i<liste.size(); i++){
             somme = somme + liste.get(i).getPlat().getPrix_plat();
+            liste.get(i).setCommander(true);
+            repositoryPanier.save(liste.get(i));
         }
 
         commande.setMontant(somme);

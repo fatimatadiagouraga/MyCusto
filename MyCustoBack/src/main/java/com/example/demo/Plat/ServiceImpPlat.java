@@ -3,6 +3,7 @@ package com.example.demo.Plat;
 
 import com.example.demo.FileUploadUtil;
 import com.example.demo.Menu.Jour;
+import com.example.demo.Menu.Menu;
 import com.example.demo.Menu.RepositoryMenu;
 import com.example.demo.Panier.Panier;
 import com.example.demo.Panier.RepositoryPanier;
@@ -98,20 +99,14 @@ public class ServiceImpPlat implements ServicePlat {
     }
 
     @Override
-    public List<Plat> mj() {
-
-        return null;
+    public List<Plat> platParMenu(Long id_menu) {
+        Menu menu =repositoryMenu.findById(id_menu).get();
+        return repositoryPlat.findPlatByMenuAndEtat(menu,Etat.Activer);
     }
 
-    /*@Override
-    public Plat platForPanier(Plat p, Long id_plat) {
-        repositoryPlat.findById(id_plat).get();
-        somme+= p.getPrix_plat();
-        panier.setNom_plat(p.getNom_plat());
-        panier.setPrix_plat(p.getPrix_plat());
-        panier.setPrix_total(somme);
-        return null;
-    }*/
+
+
+
 
 
 }

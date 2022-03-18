@@ -13,9 +13,11 @@ public class Panier {
     private Boolean commander;
     @ManyToOne
     private Plat plat;
-
+    private Boolean supprimer;
     @ManyToOne
     private Client client;
+
+
 
     public Panier() {
     }
@@ -34,6 +36,14 @@ public class Panier {
 
     public void setPlat(Plat plat) {
         this.plat = plat;
+    }
+
+    public Boolean getSupprimer() {
+        return supprimer;
+    }
+
+    public void setSupprimer(Boolean supprimer) {
+        this.supprimer = supprimer;
     }
 
     public Client getClient() {
