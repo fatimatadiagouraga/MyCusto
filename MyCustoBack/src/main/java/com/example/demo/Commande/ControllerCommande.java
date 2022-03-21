@@ -1,6 +1,9 @@
 package com.example.demo.Commande;
+import com.example.demo.Plat.Plat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -16,5 +19,11 @@ public class ControllerCommande
          {
              return serviceCommande.ajoutCommande(commande,id_client);
          }
+
+         @GetMapping("listeCommande")
+           public List<Commande> liste(){
+            return serviceCommande.listeCommande();
+         }
+
 
 }

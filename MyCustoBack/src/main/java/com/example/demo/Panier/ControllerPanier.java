@@ -1,5 +1,6 @@
 package com.example.demo.Panier;
 
+import com.example.demo.Plat.Plat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,4 +31,8 @@ public class ControllerPanier {
    }
 
 
+   @PutMapping("updateQ/{id_panier}/{quantite}")
+    public Panier update(@PathVariable Long id_panier, @PathVariable int quantite){
+        return servicepanier.updateQ(id_panier,quantite);
+    }
 }

@@ -43,4 +43,9 @@ public class ControllerMenu {
         return serviceMenu.menubyId(id_menu);
     }
 
+    @GetMapping("date")
+    public Menu menuByDate(){
+        return serviceMenu.menuByDate();
+    }
+
 }

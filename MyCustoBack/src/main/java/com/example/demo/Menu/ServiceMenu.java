@@ -9,4 +9,5 @@ public interface ServiceMenu {
     public Menu modifierMenu(Menu menu,Long id_menu);
     public Menu supprimerMenu(Long id_menu);
     public Menu menubyId(Long id_menu);
+    public Menu menuByDate();
 }

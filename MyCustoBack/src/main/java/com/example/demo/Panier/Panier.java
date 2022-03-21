@@ -11,6 +11,8 @@ public class Panier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_panier;
     private Boolean commander;
+    private int quantite;
+    private int montant;
     @ManyToOne
     private Plat plat;
     private Boolean supprimer;
@@ -44,6 +46,22 @@ public class Panier {
 
     public void setSupprimer(Boolean supprimer) {
         this.supprimer = supprimer;
+    }
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public int getMontant() {
+        return montant;
+    }
+
+    public void setMontant(int montant) {
+        this.montant = montant;
     }
 
     public Client getClient() {

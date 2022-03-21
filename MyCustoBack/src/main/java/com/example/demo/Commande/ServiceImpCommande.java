@@ -1,5 +1,7 @@
 package com.example.demo.Commande;
 
+import com.example.demo.Administrateur.Administrateur;
+import com.example.demo.Administrateur.RepositoryAdmin;
 import com.example.demo.Client.Client;
 import com.example.demo.Client.RepositoryClient;
 import com.example.demo.Menu.RepositoryMenu;
@@ -19,6 +21,8 @@ public class ServiceImpCommande implements ServiceCommande{
     RepositoryPanier repositoryPanier;
     @Autowired
     RepositoryClient repositoryClient;
+    @Autowired
+    RepositoryAdmin repositoryAdmin;
 
 
     @Override
@@ -29,7 +33,7 @@ public class ServiceImpCommande implements ServiceCommande{
         int somme = 0;
         List<Panier> liste = commande.getPanierList();
         for (int i =0; i<liste.size(); i++){
-            somme = somme + liste.get(i).getPlat().getPrix_plat();
+            somme = somme + liste.get(i).getMontant();
             liste.get(i).setCommander(true);
             repositoryPanier.save(liste.get(i));
         }
@@ -53,26 +57,11 @@ public class ServiceImpCommande implements ServiceCommande{
 
     @Override
     public List<Commande> listeCommande() {
+
         return repCommande.findCommandeByEtat(Etat.Attente);
     }
 
-    /*@Override
-    public void supprimerCommande(Long idCommande) {
-   repCommande.deleteById(idCommande);
-       return ;
-    }
 
-    @Override
-    public Commande modifierCommande(Commande commande, Long idCommande) {
-        Commande commande1= repCommande.findById(idCommande).get();
-
-        return repCommande.save(commande1);
-    }
-
-    @Override
-    public List<Commande> listeCommande() {
-        return repCommande.findAll();
-    }*/
 
 
 

@@ -3,6 +3,7 @@ package com.example.demo.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,5 +45,10 @@ public class ServiceImpMenu implements ServiceMenu{
     @Override
     public Menu menubyId(Long id_menu) {
         return repositoryMenu.findById(id_menu).get();
+    }
+
+    @Override
+    public Menu menuByDate() {
+        return repositoryMenu.findByDateAndEtat(LocalDate.now(), Etat.Activer);
     }
 }

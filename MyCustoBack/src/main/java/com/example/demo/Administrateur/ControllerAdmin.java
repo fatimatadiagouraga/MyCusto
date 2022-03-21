@@ -14,7 +14,6 @@ public class ControllerAdmin {
     ServiceAdmin serviceAdmin;
 
     @PostMapping("ajoutAdmin")
-    @ResponseBody
     public Administrateur ajouterAdmin(@RequestBody Administrateur administrateur){
         return serviceAdmin.ajouterAdmin(administrateur);
     }
