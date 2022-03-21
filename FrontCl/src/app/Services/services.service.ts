@@ -10,6 +10,7 @@ export class ServicesService {
   urlImg='http://localhost:8080/mycustoapi/plat/imageplat/'
   apipanier:"http://localhost:8080/mycustoApi/panier/"
   apicommande:'http://localhost:8080/mycustoApi/commande/'
+  MenuJour:'http://localhost:8080/mycustoapi/menu/'
 
   constructor(private http:HttpClient) { }
 
@@ -36,6 +37,10 @@ export class ServicesService {
     return this.http.get('http://localhost:8080/mycustoapi/menu/listeMenu');
   }
 
+  menuJour(){
+    return this.http.get('http://localhost:8080/mycustoapi/menu/date');
+  }
+
 listePlatMenu(id_menu:any){
   return this.http.get('http://localhost:8080/mycustoapi/plat/listParMenu/'+id_menu);
 }
@@ -47,7 +52,7 @@ modifierClt(id:any,clients:any){
   return this.http.put('http://localhost:8080/mycustoApi/client/modifierClient/'+id,clients);
 }
 
-//quantite de plat commandé 
+//quantite de plat commandé
 
 updateQ(id_panier:any,quantite:any,panier:any){
 return this.http.put('http://localhost:8080/mycustoApi/panier/updateQ/'+id_panier+'/'+quantite,panier);

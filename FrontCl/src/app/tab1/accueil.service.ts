@@ -9,7 +9,7 @@ export class AccueilService {
   urlImg=environment.apiImage;
   constructor(private http: HttpClient) {}
 
-    getPlatSer(){
-      return  this.http.get(this.urlPlat+'/listePlat');
+    getPlatSer(id: number){
+      return  this.http.get(this.urlPlat+'/listParMenu/'+id);
     }
 }

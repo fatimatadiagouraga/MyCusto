@@ -9,6 +9,7 @@ export const environment = {
 
   ListePlat:'http://localhost:8080/mycustoapi/plat',
 
+
   apiImage:'http://localhost:8080/mycustoapi/plat/imageplat/'
 };
 
