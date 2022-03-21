@@ -1,8 +1,15 @@
 
-<ion-header>
+<ion-header >
+  <ion-toolbar>
+    <button type="submit"  style="float: left;margin-top: 10px;background-color: rgb(248, 246, 242);" [routerLink]="['/modifier-info-client/', client.id_client]">Modifier</button>
+    
+    <button  (click)="logOut()" style="background-color: rgb(10, 9, 9);font-size: large;color: rgb(250, 245, 245);margin-top: 30px;float: right;">deconnexion</button> 
+  </ion-toolbar>
 
   <div class="header">
-    <h2>Client1</h2>
+    
+    <h4 style="margin-top: 60px;text-align: center;">{{client?.nom}}   {{client.prenom}}</h4>
+    <h2>{{client.telephone}}</h2>
   </div>
   <div class="flex">
     <div class="border-blue">
@@ -13,18 +20,11 @@
       </div>
     </div>
   </div>
+  
 </ion-header>
-<ion-content>
-  <ion-card>
-    client1
-    <br>
-    contact 24256
-    <br>
-    EMAIL sdd@gmail.com
-  </ion-card>
-  <br>
-  <br>
-  <ion-button  shape="round" class="modifier" color="black" [routerLink]="['/modifier-info-client']">
-    Modifier
-  </ion-button>
+<ion-content  fullscreen="true">
+  
+ 
+<h2>Vous etes excepttionnel</h2>
 </ion-content>
+
