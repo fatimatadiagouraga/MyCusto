@@ -52,7 +52,7 @@ public class ServiceImpAdmin implements ServiceAdmin{
     }
     @Override
     public Optional<Administrateur> login (String motdepasse, String login){
-      return  repositoryAdmin.findByMotdepasseAndLogin(motdepasse,login);
+      return  repositoryAdmin.findByMotdepasseAndLoginAndEtat(motdepasse,login,Etat.activer);
 
     }
 

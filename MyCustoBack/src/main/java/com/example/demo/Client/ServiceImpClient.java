@@ -59,7 +59,7 @@ public class ServiceImpClient implements ServiceClient {
 
     @Override
     public Optional<Client> connexion(String login, String motdepasse) {
-       return repositoryClient.findClientByLoginAndMotdepasse(login,motdepasse);
+       return repositoryClient.findClientByLoginAndMotdepasseAndEtatClient(login,motdepasse,EtatClient.Activer);
 
     }
 }

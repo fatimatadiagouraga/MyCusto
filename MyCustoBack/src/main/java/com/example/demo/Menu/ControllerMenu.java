@@ -18,9 +18,9 @@ public class ControllerMenu {
 
 
     @PostMapping("ajoutMenu")
-    public String ajouterMenu(@RequestBody Menu menu) {
-        serviceMenu.ajouterMenu(menu);
-        return "Ajout effectué avec succès";
+    public Menu ajouterMenu(@RequestBody Menu menu) {
+        return   serviceMenu.ajouterMenu(menu);
+
     }
 
     @GetMapping("listeMenu")
