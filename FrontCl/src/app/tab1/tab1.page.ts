@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { AccueilService } from './accueil.service';
 import { ServicesService } from '../Services/services.service';
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -138,7 +138,9 @@ export class Tab1Page implements OnInit {
   image: any;
   client: any;
   liste1: any;
+
   constructor(
+    private toastController: ToastController,
     private service: AccueilService,
     private services: ServicesService
   ) {}
@@ -154,6 +156,7 @@ export class Tab1Page implements OnInit {
       .ajoutpanier(id_plat, this.client.id_client, platpanier)
       .subscribe((data) => {
         console.log(data);
+        this.presentToast('Ajouter au panier avec succès');
       });
   }
   menujour() {
@@ -162,5 +165,13 @@ export class Tab1Page implements OnInit {
         this.liste = data;
       });
     });
+  }
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      color: 'warning'
+    });
+    toast.present();
   }
 }

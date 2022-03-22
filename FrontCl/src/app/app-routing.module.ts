@@ -10,11 +10,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./accueil/accueil.module').then( m => m.AccueilPageModule)
   },
-  
-  {
-    path: 'profil',
-    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
-  },
+
+  // {
+  //   path: 'profil',
+  //   loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
+  // },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -35,7 +35,7 @@ const routes: Routes = [
     path: 'valider-commande',
     loadChildren: () => import('./valider-commande/valider-commande.module').then( m => m.ValiderCommandePageModule)
   },
- 
+
   {
     path: 'categorie-liste/:id',
     loadChildren: () => import('./categorie-liste/categorie-liste.module').then( m => m.CategorieListePageModule)
