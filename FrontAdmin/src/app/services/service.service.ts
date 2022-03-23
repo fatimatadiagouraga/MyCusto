@@ -40,7 +40,7 @@ export class ServiceService {
     return this.http.put(this.apiAdmin+'modifierAdmin/'+id, adminModif);
   }
 
-
+  
   //services plats
   //.......................................................
   ListePlat() {
@@ -50,7 +50,7 @@ export class ServiceService {
   AjoutPlat(plat:any,photo:File){
     const forms: FormData = new FormData();
     forms.append("image", photo)
-    return this.http.post(this.apiPlat+'ajoutplat',forms);
+    return this.http.post(this.apiPlat+'ajoutplat',forms);   
   }
 
 
@@ -78,7 +78,6 @@ export class ServiceService {
   }
 
   ajoutermenu(menus:any){
-    console.log("menu : ", menus);
     return this.http.post(this.apiMenu+'ajoutMenu',menus);
   }
 
@@ -89,7 +88,7 @@ export class ServiceService {
   modifmenu(id_menu : any, menumodif : any){
     return this.http.put(this.apiMenu+'modifierMenu/'+id_menu,menumodif)
   }
-
+  
   //Api commande
   liste(){
     return this.http.get(this.apiCommande+'listeCommande');

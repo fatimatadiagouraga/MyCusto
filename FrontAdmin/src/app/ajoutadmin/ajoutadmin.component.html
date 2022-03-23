@@ -22,12 +22,13 @@
 
 <mat-card style="background-color: rgb(255, 255, 255);border-radius: 30px;margin: 5%;">
     <div>
+        <mat-icon routerLink="/listAdmin">cancel</mat-icon>
         <h1 style="text-align: center;color: black;font-weight: bold;">Ajouter Admin</h1>
         <form #dataAdmin="ngForm" (ngSubmit)="AjoutAdmin(dataAdmin)" class="form">
             <div>
                 <span>
                
-                    <input type="text"  required placeholder="Nom" name="nom" ngModel>
+                    <input type="text"  required  minlength="2"  maxlength="20" placeholder="Nom" name="nom" ngModel>
                 </span>
                 <span>
                    
@@ -38,19 +39,27 @@
                     <input type="text"  required placeholder="Adresse" name="adresse" ngModel>
                 </span>
                 <span>
-                    <input type="number"  required placeholder="Tel" name="telephone" ngModel>
+                    <input type="number" pattern="[0-4]{1,4}" required placeholder="Tel" name="telephone" ngModel >
                 </span>
                 <span>
                     <input type="email"  required placeholder="Email" name="email" ngModel>
                 </span>
+
                 <span>
-                    <input type="text"  required placeholder="Login" name="login" ngModel>
+                    <input type="text"  placeholder="Login" name="login" #login="ngModel" pattern="[0-9]*[A-Za-z]{4,10}" required ngModel>
                 </span>
+                <div style="font-size: 10px;margin-top: 10px; color: rgb(247, 12, 12);" [hidden]="login.valid || login.pristine" class="alert alert-danger">
+                    Respecter le Format svp : exemple Azer14.  min 6 caracteres max 8 caracteres
+                </div>
+
                 <span>
-                    <input type="text"  required placeholder="Mot de pase" name="motdepasse" ngModel>
+                    <input type="text"  required placeholder="Mot de pase" name="motdepasse" #motdepasse="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}"  ngModel id="pass">
                 </span>
+                <div   style="font-size: 10px;margin-top: 10px; color: rgb(247, 12, 12);" [hidden]="motdepasse.valid || motdepasse.pristine" class="alert alert-danger">
+                    Respecter le Format svp : exemple Azer14.  min 6 caracteres max 8 caracteres
+                </div>
                 <span>
-                    <label >    </label>
+                   
 
                     <select name="genre" ngModel style="color: black;">
                         <option value="">--Choisir un genre--</option>
@@ -60,9 +69,9 @@
                     </select>
                     
                     <!-- <input type="text"  required placeholder="Genre" name="genre" ngModel> -->
-                </span>
+                </span><br>
                 <span>
-                    <label >    </label>
+                    
 
                     <select name="profil" ngModel style="color: black;">
                         <option value="">--Choisir un profil--</option>
@@ -73,8 +82,8 @@
                 </span>
             </div><br>
            
-            <div>  
-                <button type="submit" style="background-color: black; padding: 10px 50px;margin: 20px 120px; color: white;">Ajouter</button>
+            <div style="display: flex;justify-content: center;">  
+                <button type="submit" [disabled]="dataAdmin.form.invalid" style="background-color: black; padding: 10px 50px;margin: 20px 120px; color: white;">Ajouter</button>
             </div>
         </form>
     </div>  
