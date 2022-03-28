@@ -18,9 +18,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
+
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 
@@ -51,8 +51,7 @@ public class ServiceImpPlat implements ServicePlat {
 
     @Override
     public List<Plat> listerPlat() {
-
-        return repositoryPlat.findPlatByEtat(Etat.Activer);
+        return repositoryPlat.findPlatByEtatAndMenu(Etat.Activer);
     }
 
     @Override
@@ -104,9 +103,18 @@ public class ServiceImpPlat implements ServicePlat {
         return repositoryPlat.findPlatByMenuAndEtat(menu,Etat.Activer);
     }
 
+    @Override
+    public List<Plat> corbeille() {
+        return repositoryPlat.findPlatByEtat(Etat.Desactiver);
+    }
 
-
-
+    @Override
+    public Plat restaurePlat(Long id_plat) {
+        Plat p = repositoryPlat.findById(id_plat).get();
+        p.setSupprimer(false);
+        p.setEtat(Etat.Activer);
+        return repositoryPlat.save(p) ;
+    }
 
 
 }

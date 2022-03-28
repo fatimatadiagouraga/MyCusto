@@ -12,4 +12,5 @@ public interface RepositoryMenu extends JpaRepository<Menu,Long> {
     List<Menu> findMenuByEtat(Etat etat);
     Menu findByDateAndEtat(LocalDate date, Etat etat);
 
+   Menu findByEtat(Etat etat);
 }

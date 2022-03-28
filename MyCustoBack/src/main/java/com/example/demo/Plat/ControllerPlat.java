@@ -67,5 +67,14 @@ public class ControllerPlat {
         return servicePlat.platParMenu(id_menu);
     }
 
+    @GetMapping("corbeille")
+    public  List<Plat> corbeille(){
+        return servicePlat.corbeille();
+    }
+
+    @DeleteMapping("restaurePlat/{id_plat}")
+    public Plat restaurePlat(@PathVariable Long id_plat) {
+        return servicePlat.restaurePlat(id_plat);
+    }
 
    }

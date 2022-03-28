@@ -10,5 +10,8 @@ import java.util.List;
 @Repository
 public interface RepositoryCommande extends JpaRepository<Commande,Long> {
     List<Commande> findCommandeByEtat(Etat etat);
+    List<Commande> findCommandeByClientAndSupprimerAndEtat(Client client,Boolean supprimer,Etat etat);
+    List<Commande> findCommandeByClientAndEtat(Client client,Etat etat );
+
 
 }

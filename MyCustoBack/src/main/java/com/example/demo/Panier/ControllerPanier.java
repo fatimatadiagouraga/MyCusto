@@ -35,4 +35,10 @@ public class ControllerPanier {
     public Panier update(@PathVariable Long id_panier, @PathVariable int quantite){
         return servicepanier.updateQ(id_panier,quantite);
     }
+
+    @GetMapping("deselect/{id_client}/{id_plat}")
+    public Panier desected(@PathVariable Long id_client,@PathVariable Long id_plat){
+        return servicepanier.deselect(id_client,id_plat);
+    }
+
 }

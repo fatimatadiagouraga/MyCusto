@@ -39,7 +39,13 @@ public class ServiceImpAdmin implements ServiceAdmin{
         administrateur1.setLogin(administrateur.getLogin());
         administrateur1.setProfil(administrateur.getProfil());
         administrateur1.setGenre(administrateur.getGenre());
-        return repositoryAdmin.save(administrateur1);
+        Optional<Administrateur> ad =repositoryAdmin.findByLogin(administrateur1.getLogin());
+        if (ad.isPresent()){
+            return null;
+        }else{
+            return repositoryAdmin.save(administrateur1);
+        }
+
     }
 
     @Override
@@ -59,5 +65,18 @@ public class ServiceImpAdmin implements ServiceAdmin{
     @Override
     public Administrateur adminById(Long id_admin) {
         return repositoryAdmin.findById(id_admin).get();
+    }
+
+    @Override
+    public List<Administrateur> corbeille() {
+        return repositoryAdmin.findAdministrateurByEtat(Etat.desactiver);
+    }
+
+    @Override
+    public Administrateur restaureAdmin(Long id_admin) {
+        Administrateur c =repositoryAdmin.findById(id_admin).get();
+        c.setSupprimer(false);
+        c.setEtat_admin(Etat.activer);
+        return repositoryAdmin.save(c);
     }
 }

@@ -21,6 +21,7 @@ public class Commande {
     @Enumerated(EnumType.STRING)
     private Etat etat;
     private int montant;
+    private Boolean supprimer;
 
     @ManyToOne
     private Client client;
@@ -88,6 +89,14 @@ public class Commande {
 
     public void setMontant(int montant) {
         this.montant = montant;
+    }
+
+    public Boolean getSupprimer() {
+        return supprimer;
+    }
+
+    public void setSupprimer(Boolean supprimer) {
+        this.supprimer = supprimer;
     }
 
     public Commande(int prix, LocalDate date, Client client, Menu menu) {

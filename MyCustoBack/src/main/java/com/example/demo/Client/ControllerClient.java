@@ -32,9 +32,9 @@ public class ControllerClient {
     }
 
     @DeleteMapping("supprimerClient/{id_client}")
-    public String SupprimerClient(@PathVariable Long id_client) {
-        serviceClient.SupprimerClient(id_client);
-        return "suppression effectuée avec succèes";
+    public Client SupprimerClient(@PathVariable Long id_client) {
+        return  serviceClient.SupprimerClient(id_client);
+
 
     }
 
@@ -48,4 +48,9 @@ public class ControllerClient {
     public Optional<Client> connexion(@RequestParam String login, @RequestParam String motdepasse) {
         return serviceClient.connexion(login, motdepasse);
     }
+
+   @GetMapping("corbeille")
+    public  List<Client> corb(){
+        return serviceClient.corbeilleClt();
+   }
 }

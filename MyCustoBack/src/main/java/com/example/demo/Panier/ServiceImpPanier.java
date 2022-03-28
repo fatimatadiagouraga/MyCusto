@@ -33,6 +33,7 @@ public class ServiceImpPanier implements Servicepanier{
         panier.setSupprimer(false);
         panier.setQuantite(a);
         panier.setMontant(plat.getPrix_plat());
+        panier.setSelection(false);
         return repositoryPanier.save(panier);
     }
 
@@ -62,5 +63,12 @@ public class ServiceImpPanier implements Servicepanier{
         panier.setQuantite(quantite);
         panier.setMontant(panier.getPlat().getPrix_plat() * panier.getQuantite());
         return repositoryPanier.save(panier);
+    }
+
+    @Override
+    public Panier deselect(Long id_client,Long id_plat) {
+        Client client1=repositoryclient.findById(id_client).get();
+        Plat plat1 = repositoryPlat.findById(id_plat).get();
+        return repositoryPanier.findPanierByClientAndPlat(client1,plat1);
     }
 }

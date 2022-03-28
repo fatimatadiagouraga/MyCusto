@@ -13,6 +13,7 @@ public class Panier {
     private Boolean commander;
     private int quantite;
     private int montant;
+    private Boolean selection;
     @ManyToOne
     private Plat plat;
     private Boolean supprimer;
@@ -54,6 +55,14 @@ public class Panier {
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    public Boolean getSelection() {
+        return selection;
+    }
+
+    public void setSelection(Boolean selection) {
+        this.selection = selection;
     }
 
     public int getMontant() {

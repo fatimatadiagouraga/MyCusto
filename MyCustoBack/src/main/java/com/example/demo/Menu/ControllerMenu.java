@@ -35,9 +35,8 @@ public class ControllerMenu {
 
     @DeleteMapping("supprimerMenu/{id_menu}")
     public Menu supprimerMenu(@PathVariable Long id_menu) {
-       return serviceMenu.supprimerMenu(id_menu);
+        return serviceMenu.supprimerMenu(id_menu);}
 
-    }
     @GetMapping("menubyId/{id_menu}")
     public Menu menubyId(@PathVariable Long id_menu) {
         return serviceMenu.menubyId(id_menu);
@@ -47,5 +46,15 @@ public class ControllerMenu {
     public Menu menuByDate(){
         return serviceMenu.menuByDate();
     }
+
+    @GetMapping("corbeille")
+        public List<Menu> corbeille(){
+            return serviceMenu.corbeille();
+        }
+
+    @DeleteMapping("restaureMenu/{id_menu}")
+    public Menu restaureMenu(@PathVariable Long id_menu) {
+        return serviceMenu.restaureMenu(id_menu);}
+
 
 }

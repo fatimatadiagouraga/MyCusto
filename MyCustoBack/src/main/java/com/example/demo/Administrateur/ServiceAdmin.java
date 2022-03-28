@@ -14,4 +14,7 @@ public interface ServiceAdmin {
     public Administrateur supprimerAdmin(Long id_admin);
     public Optional<Administrateur> login (String motdepasse, String login);
     public Administrateur adminById(Long id_admin);
+    public List<Administrateur> corbeille();
+    public Administrateur restaureAdmin(Long id_admin);
+
 }

@@ -21,7 +21,6 @@ public class ServiceImpMenu implements ServiceMenu{
 
     @Override
     public List<Menu> listerMenu() {
-
         return repositoryMenu.findMenuByEtat(Etat.Activer);
     }
 
@@ -30,6 +29,8 @@ public class ServiceImpMenu implements ServiceMenu{
         Menu menu1=repositoryMenu.findById(id_menu).get();
         menu1.setNom_menu(menu.getNom_menu());
         menu1.setDescription_menu(menu.getDescription_menu());
+        menu1.setD(menu.getD());
+
         return repositoryMenu.save(menu1);
     }
 
@@ -49,6 +50,26 @@ public class ServiceImpMenu implements ServiceMenu{
 
     @Override
     public Menu menuByDate() {
-        return repositoryMenu.findByDateAndEtat(LocalDate.now(), Etat.Activer);
+        Menu menu = repositoryMenu.findByDateAndEtat(LocalDate.now(), Etat.Activer);
+        if (menu!=null){
+            return menu;
+        }else{
+            LocalDate yesterday = LocalDate.now().minusDays(1);
+            return repositoryMenu.findByDateAndEtat(yesterday, Etat.Activer);
+        }
+    }
+
+    @Override
+    public List<Menu> corbeille() {
+        return repositoryMenu.findMenuByEtat(Etat.Desactiver);
+    }
+
+    @Override
+    public Menu restaureMenu(Long id_menu) {
+        Menu menu=repositoryMenu.findById(id_menu).get();
+        menu.setEtat(Etat.Activer);
+        menu.setSupprimer(false);
+        return repositoryMenu.save(menu);
+
     }
 }

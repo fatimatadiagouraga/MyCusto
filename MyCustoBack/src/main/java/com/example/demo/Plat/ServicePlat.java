@@ -20,6 +20,9 @@ public interface ServicePlat {
     public byte[] getPhoto(long id) throws IOException;
     public List<Plat> menudujour(Jour jour);
     public List<Plat> platParMenu(Long id_menu);
+    public  List<Plat> corbeille();
+    public Plat restaurePlat(Long id_plat);
+
 
 
 

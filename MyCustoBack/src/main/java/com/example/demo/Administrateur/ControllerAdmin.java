@@ -47,4 +47,16 @@ public class ControllerAdmin {
         return serviceAdmin.adminById(id_admin);
     }
 
+    @GetMapping("corbeille")
+    public List<Administrateur> corbeille(){
+        return serviceAdmin.corbeille();
+    }
+
+
+    @DeleteMapping("restaureAdmin/{id_admin}")
+    public Administrateur restaureAdmin(@PathVariable Long id_admin) {
+        return  serviceAdmin.restaureAdmin(id_admin);
+
+    }
+
 }

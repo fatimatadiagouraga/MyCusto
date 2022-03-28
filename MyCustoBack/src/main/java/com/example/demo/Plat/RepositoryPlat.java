@@ -10,11 +10,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface RepositoryPlat extends JpaRepository<Plat,Long> {
+
+    @Query("SELECT plat FROM Plat plat WHERE plat.etat=:etat AND plat.menu.etat=:etat")
+    List<Plat> findPlatByEtatAndMenu(@Param("etat") Etat etat);
+
     List<Plat> findPlatByEtat(Etat etat);
 
     @Query("Select plat from Plat plat where plat.menu.menujour=:jour")
     List<Plat> findPlatByMenu(@Param("jour") Jour jour);
-
     List<Plat> findPlatByMenuAndEtat(Menu menu,Etat etat);
+    Menu findPlatByMenu(Menu menu);
 
 }

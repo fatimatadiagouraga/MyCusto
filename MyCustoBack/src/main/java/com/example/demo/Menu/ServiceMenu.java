@@ -10,4 +10,7 @@ public interface ServiceMenu {
     public Menu supprimerMenu(Long id_menu);
     public Menu menubyId(Long id_menu);
     public Menu menuByDate();
+    public List<Menu> corbeille();
+    public Menu restaureMenu(Long id_menu);
+
 }
