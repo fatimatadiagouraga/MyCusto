@@ -3,12 +3,15 @@ import { OnInit } from '@angular/core';
 import { AccueilService } from './accueil.service';
 import { ServicesService } from '../Services/services.service';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
+  comparaison : any;
   public slideOpts = {
     slidesPerView: 1,
     autoplay: {
@@ -137,28 +140,42 @@ export class Tab1Page implements OnInit {
   liste: any;
   image: any;
   client: any;
+  panier : any;
   liste1: any;
+  exist : boolean
 
   constructor(
     private toastController: ToastController,
     private service: AccueilService,
-    private services: ServicesService
+    private services: ServicesService,
+    private alert :AlertController,
+    private route:Router
   ) {}
   ngOnInit() {
     this.image = this.service.urlImg;
     //recuperer client connecter
     this.client = JSON.parse(localStorage.getItem('Info'));
     this.menujour();
+    this.listPanierClt();
   }
 
   ajouter(id_plat: any, platpanier: any) {
-    return this.services
-      .ajoutpanier(id_plat, this.client.id_client, platpanier)
-      .subscribe((data) => {
-        console.log(data);
-        this.presentToast('Ajouter au panier avec succès');
-      });
-  }
+    
+    // this.services.deselectPlat(this.client.id_client,id_plat).subscribe(data =>{
+    //   if(data){
+    //     return this.presentAlert();
+    //   }else{
+        return this.services.ajoutpanier(id_plat, this.client.id_client, platpanier).subscribe((data) => {
+          this.panier = data
+          console.log(this.panier.client.id_client);
+          // this.listPanierClt();
+          this.presentToast('Ajouter au panier avec succès');
+        });
+      }
+      
+      
+    
+  
   menujour() {
     this.services.menuJour().subscribe((data) => {
       this.service.getPlatSer(data['id_menu']).subscribe((data) => {
@@ -174,4 +191,36 @@ export class Tab1Page implements OnInit {
     });
     toast.present();
   }
+
+  listPanierClt(){
+    this.services.panierParClient(this.client.id_client).subscribe(data =>{
+      console.log(data);
+    })
+  }
+
+  deselect(id_client:any,id_plat:any){
+    
+  }
+
+  async presentAlert() {
+    const alert = await this.alert.create({
+      header: 'Avertissement',
+      mode: 'ios',
+      cssClass: 'my-custom-class',
+      message: '<b style="color:#FF0000">Vous avez deja ajouter ce plat dans le panier</b>',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          cssClass: 'danger',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }
+      ],
+    });
+
+    await alert.present();
+  }
+
 }

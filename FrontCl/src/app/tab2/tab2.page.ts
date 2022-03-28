@@ -26,7 +26,6 @@ export class Tab2Page implements OnInit {
   }
 list(){
   return this.service.listeMenu().subscribe(data =>{
-
    this.listes=data
    console.log(this.listes);
    

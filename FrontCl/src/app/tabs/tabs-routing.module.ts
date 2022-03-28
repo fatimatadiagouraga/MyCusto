@@ -23,6 +23,12 @@ const routes: Routes = [
         path: 'profil',
         loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule)
       },
+
+      {
+        path: 'commande',
+        loadChildren: () => import('../commande/commande.module').then( m => m.CommandePageModule)
+      },
+     
       {
         path: '',
         redirectTo: '/tabs/tab1',
@@ -30,11 +36,7 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path: '',
-  //   redirectTo: '/tabs/tab1',
-  //   pathMatch: 'full'
-  // }
+ 
 ];
 
 @NgModule({

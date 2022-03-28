@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: 'tabs',
@@ -39,7 +40,11 @@ const routes: Routes = [
   {
     path: 'categorie-liste/:id',
     loadChildren: () => import('./categorie-liste/categorie-liste.module').then( m => m.CategorieListePageModule)
-  }
+  },
+  // {
+  //   path: 'commande',
+  //   loadChildren: () => import('./commande/commande.module').then( m => m.CommandePageModule)
+  // }
 
 ];
 @NgModule({

@@ -58,4 +58,36 @@ updateQ(id_panier:any,quantite:any,panier:any){
 return this.http.put('http://localhost:8080/mycustoApi/panier/updateQ/'+id_panier+'/'+quantite,panier);
 }
 
+deselectPlat(id_client:any,id_plat:any){
+  return this.http.get('http://localhost:8080/mycustoApi/panier/deselect/'+id_client +'/'+ id_plat);
+}
+
+//liste des commandes livrées par client
+listCommandeClient(id_client:any){
+  return this.http.get('http://localhost:8080/mycustoApi/commande/listeCommandeClt/'+id_client);
+}
+
+
+//liste des commandes Encours par client
+listCommandeEncoursClient(id_client:any){
+  return this.http.get('http://localhost:8080/mycustoApi/commande/commandeEnCours/'+id_client);
+}
+//button valider commande
+validerCommande(id_commande:any){
+  return this.http.delete('http://localhost:8080/mycustoApi/commande/validerLivraison/'+id_commande);
+}
+
+//supprimerCommande par clt
+supprimerCommande(id_commande:any){
+  return this.http.delete('http://localhost:8080/mycustoApi/commande/supprimer/'+id_commande);
+}
+
+
+//supprimercompte
+supprimerCpte(id_client){
+  return this.http.delete('http://localhost:8080/mycustoApi/client/supprimerClient/'+id_client);
+}
+
+
+
 }

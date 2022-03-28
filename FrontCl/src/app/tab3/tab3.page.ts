@@ -1,4 +1,5 @@
 import { Component ,OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { ModelPanier } from '../model-panier';
 
 
@@ -21,13 +22,14 @@ export class Tab3Page implements OnInit{
   quantite=1;
   
 
-  constructor(private service:ServicesService) {}
+  constructor(private service:ServicesService,
+    private toastController:ToastController) {}
 
   ngOnInit() {
     this.image=this.service.urlImg
     this.client= JSON.parse(localStorage.getItem('Info'));
     console.log(this.client);
-    // this.panierclient();
+    this.panierclient();
     
     
     
@@ -41,6 +43,7 @@ export class Tab3Page implements OnInit{
      this.service.panierParClient(this.client.id_client).subscribe(datas =>{
       this.panierList=datas;
       this.commande.panierList= this.panierList
+      
     })
   }
 
@@ -59,7 +62,7 @@ export class Tab3Page implements OnInit{
   supprimer(id_panier:any){
      
     this.service.supprimerPanier(id_panier).subscribe(() =>{
-      this.ngOnInit();
+      // this.ngOnInit();
 
     })
   }
@@ -76,4 +79,14 @@ export class Tab3Page implements OnInit{
   incremante(){
     
   } 
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'top',
+      color: 'warning'
+    });
+    toast.present();
+  }
 }
