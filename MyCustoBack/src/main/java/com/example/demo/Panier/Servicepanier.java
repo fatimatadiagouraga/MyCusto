@@ -15,6 +15,11 @@ public interface Servicepanier {
     public Panier supprimerPanier(Long id_panier);
     public List<Plat> menudujour(LocalDate date);
     public Panier updateQ(Long id_panier,int quantite);
-    public Panier deselect (Long id_client,Long id_plat);
+    public List<Panier> deselect (Long id_client,Long id_plat);
+
+    public void suppPanierClient(Long id_client) ;
+
+
+
 
 }

@@ -37,8 +37,13 @@ public class ControllerPanier {
     }
 
     @GetMapping("deselect/{id_client}/{id_plat}")
-    public Panier desected(@PathVariable Long id_client,@PathVariable Long id_plat){
+    public List<Panier> desected(@PathVariable Long id_client,@PathVariable Long id_plat){
         return servicepanier.deselect(id_client,id_plat);
+    }
+
+    @DeleteMapping("supprimer/{id_client}")
+    public void toutSup(@PathVariable Long id_client){
+        servicepanier.suppPanierClient(id_client);
     }
 
 }

@@ -8,9 +8,12 @@ import com.example.demo.Menu.RepositoryMenu;
 import com.example.demo.Panier.Panier;
 import com.example.demo.Panier.RepositoryPanier;
 import com.example.demo.Plat.Plat;
+import com.jayway.jsonpath.internal.function.text.Length;
+import org.hibernate.query.criteria.internal.expression.function.LengthFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,6 +28,7 @@ public class ServiceImpCommande implements ServiceCommande{
     RepositoryAdmin repositoryAdmin;
 
 
+
     @Override
     public Commande ajoutCommande(Commande commande,Long id_client) {
         Client client=repositoryClient.findById(id_client).get();
@@ -32,13 +36,16 @@ public class ServiceImpCommande implements ServiceCommande{
         commande.setEtat(Etat.Attente);
         commande.setSupprimer(false);
         int somme = 0;
+
         List<Panier> liste = commande.getPanierList();
         for (int i =0; i<liste.size(); i++){
             somme = somme + liste.get(i).getMontant();
             liste.get(i).setCommander(true);
             repositoryPanier.save(liste.get(i));
         }
+
         commande.setMontant(somme);
+
         return repCommande.save(commande);
     }
 
@@ -81,7 +88,6 @@ public class ServiceImpCommande implements ServiceCommande{
 //liste des commandes en cours methodes admins
     @Override
     public List<Commande> listeCommandeEnCours() {
-
         return repCommande.findCommandeByEtat(Etat.Encours);
     }
 
@@ -92,21 +98,21 @@ public class ServiceImpCommande implements ServiceCommande{
     }
 
 
+
+
+// validation de commande par le client
+
     @Override
     public Commande valideLivraison( Long id_Commande) {
         Commande c =repCommande.findById(id_Commande).get();
-
         c.setEtat(Etat.Livrer);
-
         return repCommande.save(c);
     }
 
     @Override
     public Commande Encours(Long id_Commande) {
         Commande c =repCommande.findById(id_Commande).get();
-
         c.setEtat(Etat.Encours);
-
         return repCommande.save(c);
     }
 

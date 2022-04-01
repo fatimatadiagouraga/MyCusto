@@ -22,6 +22,7 @@ public class Panier {
 
 
 
+
     public Panier() {
     }
 
@@ -56,6 +57,8 @@ public class Panier {
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
+
+
 
     public Boolean getSelection() {
         return selection;

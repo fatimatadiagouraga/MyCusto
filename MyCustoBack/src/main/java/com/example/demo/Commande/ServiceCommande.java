@@ -1,8 +1,5 @@
 package com.example.demo.Commande;
-
-import com.example.demo.Panier.Panier;
-import com.example.demo.Plat.Plat;
-
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ServiceCommande {
@@ -17,6 +14,10 @@ public interface ServiceCommande {
     public List<Commande>  commandeCltEtat(Long id_client);
     public List<Commande> listeCommandeEnCours();
     public List<Commande> listeCommandeLivrer();
+    
+
+
+
 
 
 

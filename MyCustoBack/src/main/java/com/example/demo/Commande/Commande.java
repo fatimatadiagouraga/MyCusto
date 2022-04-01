@@ -4,7 +4,7 @@ import com.example.demo.Administrateur.Administrateur;
 import com.example.demo.Client.Client;
 import com.example.demo.Menu.Menu;
 import com.example.demo.Panier.Panier;
-import com.example.demo.Plat.Plat;
+
 
 
 import javax.persistence.*;
@@ -22,6 +22,8 @@ public class Commande {
     private Etat etat;
     private int montant;
     private Boolean supprimer;
+
+
 
     @ManyToOne
     private Client client;
@@ -91,6 +93,8 @@ public class Commande {
         this.montant = montant;
     }
 
+
+
     public Boolean getSupprimer() {
         return supprimer;
     }
@@ -101,8 +105,6 @@ public class Commande {
 
     public Commande(int prix, LocalDate date, Client client, Menu menu) {
         this.date = date;
-
-
 
 
     }

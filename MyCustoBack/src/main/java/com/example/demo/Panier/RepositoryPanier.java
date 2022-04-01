@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface RepositoryPanier extends JpaRepository<Panier,Long> {
     List<Panier> findPanierByClientAndCommander(Client client,Boolean commander);
-    Panier findPanierByClientAndPlat(Client client, Plat plat);
+    List<Panier> findPanierByCommanderAndClientAndPlat(Boolean commander, Client client, Plat plat);
 }

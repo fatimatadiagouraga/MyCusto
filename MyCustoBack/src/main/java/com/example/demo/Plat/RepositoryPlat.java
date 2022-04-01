@@ -16,6 +16,7 @@ public interface RepositoryPlat extends JpaRepository<Plat,Long> {
 
     List<Plat> findPlatByEtat(Etat etat);
 
+
     @Query("Select plat from Plat plat where plat.menu.menujour=:jour")
     List<Plat> findPlatByMenu(@Param("jour") Jour jour);
     List<Plat> findPlatByMenuAndEtat(Menu menu,Etat etat);
