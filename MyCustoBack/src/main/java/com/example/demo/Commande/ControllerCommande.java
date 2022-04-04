@@ -6,6 +6,7 @@ import com.example.demo.Plat.Plat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -75,12 +76,20 @@ public class ControllerCommande
         return serviceCommande.valideLivraison(idCommande);
     }
 
-    @DeleteMapping("encours/{id_Commande}")
-    public Commande encours( @PathVariable Long id_Commande) {
-        return serviceCommande.Encours(id_Commande);
+    @DeleteMapping("encours/{id_Commande}/{id_admin}")
+    public Commande encours( @PathVariable Long id_Commande,@PathVariable Long id_admin) {
+        return serviceCommande.Encours(id_Commande,id_admin);
     }
 
+    @GetMapping("recette")
+    public int recette(){
+            return serviceCommande.recetteToday();
+    }
 
+    @GetMapping("recettes/{date}")
+    public int recettes(LocalDate date){
+        return serviceCommande.recette(date);
+    }
 
 
 }

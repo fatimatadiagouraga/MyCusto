@@ -17,6 +17,7 @@ public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long idCommande;
+    private Long numero;
     private LocalDate date = LocalDate.now();
     @Enumerated(EnumType.STRING)
     private Etat etat;
@@ -93,7 +94,13 @@ public class Commande {
         this.montant = montant;
     }
 
+    public Long getNumero() {
+        return numero;
+    }
 
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     public Boolean getSupprimer() {
         return supprimer;

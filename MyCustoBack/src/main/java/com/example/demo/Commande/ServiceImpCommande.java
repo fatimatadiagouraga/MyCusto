@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,6 +37,8 @@ public class ServiceImpCommande implements ServiceCommande{
         commande.setEtat(Etat.Attente);
         commande.setSupprimer(false);
         int somme = 0;
+        Date d=new Date();
+        Long num= d.getTime();
 
         List<Panier> liste = commande.getPanierList();
         for (int i =0; i<liste.size(); i++){
@@ -45,7 +48,7 @@ public class ServiceImpCommande implements ServiceCommande{
         }
 
         commande.setMontant(somme);
-
+        commande.setNumero(num);
         return repCommande.save(commande);
     }
 
@@ -97,10 +100,30 @@ public class ServiceImpCommande implements ServiceCommande{
         return repCommande.findCommandeByEtat(Etat.Livrer);
     }
 
+    @Override
+    public int recetteToday() {
+        List<Commande> list = repCommande.findCommandeByDate(LocalDate.now());
+        int somme  = 0;
+        for(int i =0; i<list.size(); i++){
+            somme = somme + list.get(i).getMontant();
+        }
+        return somme;
+    }
+
+    @Override
+    public int recette(LocalDate date) {
+
+        List<Commande> list = repCommande.findCommandeByDate(date);
+        int somme  = 0;
+        for(int i =0; i<list.size(); i++){
+            somme = somme + list.get(i).getMontant();
+        }
+        return somme;
 
 
+    }
 
-// validation de commande par le client
+    // validation de commande par le client
 
     @Override
     public Commande valideLivraison( Long id_Commande) {
@@ -110,9 +133,11 @@ public class ServiceImpCommande implements ServiceCommande{
     }
 
     @Override
-    public Commande Encours(Long id_Commande) {
+    public Commande Encours(Long id_Commande,Long id_admin) {
         Commande c =repCommande.findById(id_Commande).get();
+        Administrateur administrateur=repositoryAdmin.findById(id_admin).get();
         c.setEtat(Etat.Encours);
+        c.setAdministrateur(administrateur);
         return repCommande.save(c);
     }
 

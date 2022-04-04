@@ -8,13 +8,14 @@ public interface ServiceCommande {
     public Commande supprimerCommande(Long id_Commande);
     public Commande modifierCommande(Commande commande,Long id_Commande,Long id_admin);
     public Commande valideLivraison(Long id_Commande);
-    public Commande Encours(Long id_Commande);
+    public Commande Encours(Long id_Commande,Long id_admin);
     public List<Commande> listeCommande();
     public List<Commande>  commandeClt(Long id_client);
     public List<Commande>  commandeCltEtat(Long id_client);
     public List<Commande> listeCommandeEnCours();
     public List<Commande> listeCommandeLivrer();
-    
+    public int recetteToday ();
+    public int recette (LocalDate date);
 
 
 

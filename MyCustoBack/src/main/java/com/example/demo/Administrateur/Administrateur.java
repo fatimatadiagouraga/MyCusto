@@ -132,7 +132,7 @@ public class Administrateur {
         public Administrateur() {
         }
 
-        public Administrateur(String nom, String prenom, String adresse, int telephone, String email, String genre, String login, String motdepasse, Profil profil) {
+        public Administrateur(String nom, String prenom, String adresse, int telephone, String email, String genre, String login, String motdepasse, Profil profil, Etat etat, Boolean supprimer) {
                 this.nom = nom;
                 this.prenom = prenom;
                 this.adresse = adresse;
@@ -142,8 +142,7 @@ public class Administrateur {
                 this.login = login;
                 this.motdepasse = motdepasse;
                 this.profil = profil;
-
-
-
+                this.etat = etat;
+                this.supprimer = supprimer;
         }
 }
