@@ -72,4 +72,9 @@ public class ServiceImpMenu implements ServiceMenu{
         return repositoryMenu.save(menu);
 
     }
+
+    @Override
+    public List<Menu> listerMenuAuj() {
+        return repositoryMenu.findMenuByDateAndEtat(LocalDate.now(),Etat.Activer);
+    }
 }

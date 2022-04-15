@@ -12,5 +12,8 @@ public interface ServiceMenu {
     public Menu menuByDate();
     public List<Menu> corbeille();
     public Menu restaureMenu(Long id_menu);
+    public List<Menu> listerMenuAuj();
+
+
 
 }

@@ -56,5 +56,10 @@ public class ControllerMenu {
     public Menu restaureMenu(@PathVariable Long id_menu) {
         return serviceMenu.restaureMenu(id_menu);}
 
+    @GetMapping("listeMenuAuj")
+    public List<Menu> listerMenuAuj() {
+        return serviceMenu.listerMenuAuj();
+    }
+
 
 }

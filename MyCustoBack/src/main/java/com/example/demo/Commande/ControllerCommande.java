@@ -4,6 +4,7 @@ import com.example.demo.Client.Client;
 import com.example.demo.Panier.Panier;
 import com.example.demo.Plat.Plat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -80,14 +81,16 @@ public class ControllerCommande
     public Commande encours( @PathVariable Long id_Commande,@PathVariable Long id_admin) {
         return serviceCommande.Encours(id_Commande,id_admin);
     }
-
+   // recette du jour
     @GetMapping("recette")
     public int recette(){
             return serviceCommande.recetteToday();
     }
 
+
+    //recettes d'une date donnée
     @GetMapping("recettes/{date}")
-    public int recettes(LocalDate date){
+    public int recettes(@PathVariable @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date){
         return serviceCommande.recette(date);
     }
 

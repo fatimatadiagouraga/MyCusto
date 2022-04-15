@@ -15,7 +15,7 @@ public class ServiceImpAdmin implements ServiceAdmin{
 
     @Override
     public Administrateur ajouterAdmin(Administrateur administrateur) {
-        Optional<Administrateur> adminlog =repositoryAdmin.findByLogin(administrateur.getLogin());
+        Optional<Administrateur> adminlog =repositoryAdmin.findAdministrateurByLogin(administrateur.getLogin());
         if(adminlog.isPresent()){
             return null;
         }else {
@@ -25,7 +25,7 @@ public class ServiceImpAdmin implements ServiceAdmin{
 
     @Override
     public List<Administrateur> listerAdmin() {
-        return repositoryAdmin.findAdministrateurByEtat(Etat.activer);
+        return repositoryAdmin.findAdministrateurByEtatAndProfil(Etat.activer,Profil.admin);
 
     }
 
@@ -38,8 +38,9 @@ public class ServiceImpAdmin implements ServiceAdmin{
         administrateur1.setTelephone(administrateur.getTelephone());
         administrateur1.setLogin(administrateur.getLogin());
         administrateur1.setProfil(administrateur.getProfil());
+        administrateur1.setEmail(administrateur.getEmail());
         administrateur1.setGenre(administrateur.getGenre());
-        Optional<Administrateur> ad =repositoryAdmin.findByLogin(administrateur1.getLogin());
+        Optional<Administrateur> ad =repositoryAdmin.findAdministrateurByLogin(administrateur1.getLogin());
         if (ad.isPresent()){
             return null;
         }else{

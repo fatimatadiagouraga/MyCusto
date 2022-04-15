@@ -11,7 +11,10 @@ import java.util.Optional;
 public interface RepositoryAdmin extends JpaRepository<Administrateur,Long>{
 
 Optional<Administrateur> findByMotdepasseAndLoginAndEtat(String motdepasse,String login,Etat etat);
-Optional<Administrateur> findByLogin(String login);
+Optional<Administrateur> findAdministrateurByLogin(String login);
 Optional<Administrateur> findByEmailAndLogin(String email,String login);
-List<Administrateur> findAdministrateurByEtat(Etat etat);
+List<Administrateur> findAdministrateurByEtatAndProfil(Etat etat,Profil profil);
+    List<Administrateur> findAdministrateurByEtat(Etat etat);
+
+
 }
