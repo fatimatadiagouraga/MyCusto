@@ -1,0 +1,26 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar color="warning">
+    <ion-title >
+      Les menus
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <section>
+    <div class="marquee-rtl" style="position: fixed; z-index: 1;">
+      <div>Les categories des <b>menus</b></div>
+    </div>
+  </section>
+  
+  <div style="margin-top: 110px;">
+    <ion-card *ngFor="let l of listes" class="myCard"  [routerLink]="['/categorie-liste',l.id_menu]">
+      <ion-card-content style="color:black;font-weight: bold;font-size: large;text-align: center;">
+        {{l.nom_menu}} 
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+
